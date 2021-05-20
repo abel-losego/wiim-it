@@ -1,0 +1,87 @@
+{*Ceci est une poubelle de code, lorsque je fais des changements et que je ne veux pas perdre le code je le mets ici *}
+        <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+        <!-- Bootstrap -->
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <!-- Icons -->
+        <link href="/assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
+        <!-- Main Css -->
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" id="theme-opt" />
+        <link href="/assets/css/default.css" rel="stylesheet" id="color-opt">
+
+<input type="text" class="form-control ps-5" placeholder="email" name="s" required="">
+<input type="password" class="form-control ps-5" placeholder="Password" required="">
+
+
+<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+
+{% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+    'constraints' => [
+                    new IsTrue([
+                        'message' => 'Vous devez accepter les termes.',
+                    ]),
+                ],
+
+
+<div class="col-md-6">
+                                                        <div class="mb-3">
+                                                            <label class="form-label">First name <span class="text-danger">*</span></label>
+                                                            <div class="form-icon position-relative">
+                                                                <i data-feather="user" class="fea icon-sm icons"></i>
+                                                                <input type="text" class="form-control ps-5" placeholder="First Name" name="s" required="">
+                                                            </div>
+                                                        </div>
+                                                    </div><!--end col-->
+
+                                                    <div class="col-md-6">
+                                                        <div class="mb-3"> 
+                                                            <label class="form-label">Last name <span class="text-danger">*</span></label>
+                                                            <div class="form-icon position-relative">
+                                                                <i data-feather="user-check" class="fea icon-sm icons"></i>
+                                                                <input type="text" class="form-control ps-5" placeholder="Last Name" name="s" required="">
+                                                            </div>
+                                                        </div>
+                                                    </div><!--end col-->
+
+                                                    <div class="col-md-12">
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Your Email <span class="text-danger">*</span></label>
+                                                            <div class="form-icon position-relative">
+                                                                
+                                                                {{ form_widget(registrationForm.email, {'attr': {'label': 'Email'}}) }}
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div><!--end col-->
+
+                                                    <div class="col-md-12">
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Password <span class="text-danger">*</span></label>
+                                                            <div class="form-icon position-relative">
+                                                               
+                                                                {{ form_widget(registrationForm.planPassword)}}
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div><!--end col-->
+
+                                                    <div class="col-md-12">
+                                                        <div class="mb-3">
+                                                            <div class="form-check">
+                                                            
+                                                             
+                                                                {{ form_widget(registrationForm.agreeTerms) }}
+                                                                <label class="form-check-label" for="flexCheckDefault">Cliquer ici pour lire <a href="#" class="text-primary">Termes et les Conditions d'Utilisations </a></label>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div><!--end col-->
+
+                                                    <div class="col-md-12">
+                                                        <div class="d-grid">
+                                                            <button class="btn btn-primary" type="submit">Register</button>
+                                                        </div>
+                                                    </div><!--end col-->

@@ -3,18 +3,9 @@
 {% block title %}Inscription{% endblock %}
 
 {% block body %}
-    {% for flashError in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
-    {% endfor %}
-
-
     
-        
-        
-        
 
-        
-    
+
 
     <!-- Loader -->
         <!-- <div id="preloader">
@@ -28,7 +19,7 @@
         <!-- Loader -->
         
         <div class="back-to-home rounded d-none d-sm-block">
-            <a href="index.html" class="btn btn-icon btn-primary"><i data-feather="home" class="icons"></i></a>
+            <a href="" class="btn btn-icon btn-primary"><i data-feather="home" class="icons"></i></a>
         </div>
 
         <!-- Hero Start -->
@@ -44,65 +35,11 @@
                                             <h4 class="card-title text-center">Inscription</h4>
                                             <form class="login-form mt-4">
                                                 <div class="row">
-                                                    {{ form_start(registrationForm) }}
-                                                    <div class="col-md-6">
-                                                        <div class="mb-3">
-                                                            <label class="form-label">First name <span class="text-danger">*</span></label>
-                                                            <div class="form-icon position-relative">
-                                                                <i data-feather="user" class="fea icon-sm icons"></i>
-                                                                <input type="text" class="form-control ps-5" placeholder="First Name" name="s" required="">
-                                                            </div>
-                                                        </div>
-                                                    </div><!--end col-->
-
-                                                    <div class="col-md-6">
-                                                        <div class="mb-3"> 
-                                                            <label class="form-label">Last name <span class="text-danger">*</span></label>
-                                                            <div class="form-icon position-relative">
-                                                                <i data-feather="user-check" class="fea icon-sm icons"></i>
-                                                                <input type="text" class="form-control ps-5" placeholder="Last Name" name="s" required="">
-                                                            </div>
-                                                        </div>
-                                                    </div><!--end col-->
-
-                                                    <div class="col-md-12">
-                                                        <div class="mb-3">
-                                                            <label class="form-label">Your Email <span class="text-danger">*</span></label>
-                                                            <div class="form-icon position-relative">
-                                                                <i data-feather="mail" class="fea icon-sm icons"></i>
-                                                                {{ form_row(registrationForm.email) }}
-                                                            </div>
-                                                        </div>
-                                                    </div><!--end col-->
-
-                                                    <div class="col-md-12">
-                                                        <div class="mb-3">
-                                                            <label class="form-label">Password <span class="text-danger">*</span></label>
-                                                            <div class="form-icon position-relative">
-                                                                <i data-feather="key" class="fea icon-sm icons"></i>
-                                                                <input type="password" class="form-control ps-5" placeholder="Password" required="">
-                                                                {{ form_row(registrationForm.plainPassword, {
-                                                                    label: 'Password'
-                                                                }) }}
-                                                            </div>
-                                                        </div>
-                                                    </div><!--end col-->
-
-                                                    <div class="col-md-12">
-                                                        <div class="mb-3">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                                <label class="form-check-label" for="flexCheckDefault">I Accept <a href="#" class="text-primary">Terms And Condition</a></label>
-                                                                {{ form_row(registrationForm.agreeTerms) }}
-                                                            </div>
-                                                        </div>
-                                                    </div><!--end col-->
-
-                                                    <div class="col-md-12">
-                                                        <div class="d-grid">
-                                                            <button class="btn btn-primary" type="submit">Register</button>
-                                                        </div>
-                                                    </div><!--end col-->
+                                                    {{ form_start(registrationForm, {'attr': {'class': 'form-control ps-5'} }) }}
+                                                    {{ form_widget(registrationForm.email, {'attr': {'label': 'Email'}}) }}
+                                                    {{ form_widget(registrationForm.password)}}
+                                                    {{ form_widget(registrationForm.agreeTerms) }}
+                                                    <button class="btn btn-primary" type="submit">Register</button>
                                                     {{ form_end(registrationForm) }}
                                                     <div class="col-lg-12 mt-4 text-center">
                                                         <h6>Or Signup With</h6>
@@ -133,7 +70,7 @@
                         </div> <!-- end about detail -->
                     </div> <!-- end col -->    
 
-                    <div class="col-lg-8 offset-lg-4 padding-less img order-1" style="background-image:url('images/user/02.jpg')" data-jarallax='{"speed": 0.5}'></div><!-- end col -->    
+                    <div class="col-lg-8 offset-lg-4 padding-less img order-1" style="/assets/images/user/02.jpg" data-jarallax='{"speed": 0.5}'></div><!-- end col -->    
                 </div><!--end row-->
             </div><!--end container fluid-->
         </section><!--end section-->

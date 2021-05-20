@@ -19,29 +19,19 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('email')
             ->add('agreeTerms', CheckboxType::class, [
-                'mapped' => false,
+                'mapped' => false /*,
+                'label' => 'J\'accepte les conditions d\'utilisation',
                 'constraints' => [
                     new IsTrue([
                         'message' => 'Vous devez accepter les termes.',
                     ]),
-                ],
+                ],*/
             ])
-            ->add('plainPassword', PasswordType::class, [
+            ->add('password', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
-                'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Entrer un mot de passe',
-                    ]),
-                    new Length([
-                        'min' => 10,
-                        'minMessage' => 'Le mot de passe doit faire au moins 10 caractères',
-                        // max length allowed by Symfony for security reasons
-                        'max' => 4096,
-                    ]),
-                ],
+                //'mapped' => false,
+                //'attr' => ['autocomplete' => 'new-password']
             ])
         ;
     }
