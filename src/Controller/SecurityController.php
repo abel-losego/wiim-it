@@ -1,5 +1,5 @@
 <?php
-
+// Controller de gestion de la connexion/déconnexion
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

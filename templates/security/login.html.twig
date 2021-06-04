@@ -1,8 +1,10 @@
+
 {% extends "base-secu.html.twig" %}
 
 {% block title %}Connexion{% endblock %}
 
 {% block body %}
+<!-- Rendu visuel du de la page connexion -->
 <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -15,7 +17,10 @@
     {% endif %}
 
     
-    
+     <div class="back-to-home rounded d-none d-sm-block">
+            <a href="{{ path('home')}}" class="btn btn-icon btn-primary"><img src="{{ asset('build/images/home-page-white.png')}}" class="icons"></a>
+            
+    </div>
 
     <section class="cover-user bg-white">
             <div class="container-fluid px-0">
@@ -50,6 +55,7 @@
                                                     </div><!--end col-->
                                                     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
         
+                                                    <!-- section se souvenir de moi
                                                     <div class="col-lg-12">
                                                         <div class="d-flex justify-content-between">
                                                             <div class="mb-3">
@@ -60,13 +66,16 @@
                                                             </div>
                                                             <p class="forgot-pass mb-0"><a href="auth-cover-re-password.html" class="text-dark fw-bold">Mot de passe oublié ?</a></p>
                                                         </div>
-                                                    </div><!--end col-->
+                                                    </div>-->
 
                                                     <div class="col-lg-12 mb-0">
                                                         <div class="d-grid">
                                                             <button class="btn btn-primary" type="submit">Connexion</button>
                                                         </div>
                                                     </div><!--end col-->
+                                                     <div class="col-12 text-center">
+                                                        <p class="mb-0 mt-3"><small class="text-dark me-2">Mot de passe oublié ?</small> <a href="{{ path('app_forgot_password_request')}}" class="text-dark fw-bold">Réinitialiser mon mot de passe</a></p>
+                                                    </div>
 
                                                     <div class="col-lg-12 mt-4 text-center">
                                                         <h6>Ou se connecter avec </h6>
@@ -86,7 +95,7 @@
                                                     </div><!--end col-->
 
                                                     <div class="col-12 text-center">
-                                                        <p class="mb-0 mt-3"><small class="text-dark me-2">Vous n'avez pas de compte ?</small> <a href="" class="text-dark fw-bold">Inscription</a></p>
+                                                        <p class="mb-0 mt-3"><small class="text-dark me-2">Vous n'avez pas de compte ?</small> <a href="{{ path('app_register')}}" class="text-dark fw-bold">Inscription</a></p>
                                                     </div><!--end col-->
                                                 </div><!--end row-->
                                             </form>
@@ -97,7 +106,7 @@
                         </div> <!-- end about detail -->
                     </div> <!-- end col -->    
 
-                    <div class="col-lg-8 offset-lg-4 padding-less img order-1" style="background-image:url('assets/images/user/01.jpg')" data-jarallax='{"speed": 0.5}'></div><!-- end col -->    
+                    <div class="col-lg-8 offset-lg-4 padding-less img order-1" style="background-image: url({{ asset('build/images/01.jpg') }})" data-jarallax='{"speed": 0.5}'></div><!-- end col -->    
                 </div><!--end row-->
             </div><!--end container fluid-->
         </section><!--end section-->

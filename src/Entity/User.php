@@ -36,16 +36,22 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * @Assert\NotBlank
-     * @Assert\Length(min=5, minMessage="Le mot de passe doit faire au moins 10 caractères", max=4096)
+     * @Assert\EqualTo(propertyPath="confirm_password", message="Veuillez insérer le même mot de passe")
      * 
      */
     private $password;
+
+    public $confirm_password;
 
     /**
      * @ORM\Column(type="boolean")
      */
     private $isVerified = false;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $stripe_id = null;
 
     public function getId(): ?int
     {
@@ -136,6 +142,23 @@ class User implements UserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getIsVerified(): ?bool
+    {
+        return $this->isVerified;
+    }
+
+    public function getStripeId(): ?string
+    {
+        return $this->stripe_id;
+    }
+
+    public function setStripeId(string $stripe_id): self
+    {
+        $this->stripe_id = $stripe_id;
 
         return $this;
     }

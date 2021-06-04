@@ -1,8 +1,11 @@
+<!-- Contenu du mail qui sera envoyé pour la confirmation du compte -->
+
 <h1>Bonjour, vous pouvez confirmer votre email !</h1>
 
 <p>
     Confirmez votre adresse email en cliquant sur le lien suivant : <br><br>
     <a href="{{ signedUrl }}">Confirmer mon adresse email</a>.
     Ce lien expire dans {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
+    Attention vous devez etre connecté pour valider votre compte
 </p>
 

@@ -1,4 +1,5 @@
 <?php
+//Création de fausses données
 
 namespace App\DataFixtures;
 
@@ -25,7 +26,6 @@ class UserFixtures extends Fixture
                          'the_new_password'
                          ));
         $manager->persist($user);
-
         $manager->flush();
     }
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<!-- Base du rendu visuel de la section securité/connexion et de la section inscription -->
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}{% endblock %}</title>
@@ -10,10 +11,35 @@
             <!-- Renders a link tag (if your module requires any CSS)
                  <link rel="stylesheet" href="/build/app.css"> -->
         {% endblock %}
-        
+        <link rel="icon" type="image/png" href="{{ asset('build/images/favicon.ico')}}" />
         
     </head>
     <body>
+        <div class="modal" >
+        {% for messages in app.flashes(['verify_email_error','success']) %}
+            {% for message in messages %}
+            <div class="flash-notice">
+                {{ message }}
+            </div>
+            {% endfor %}
+        {% endfor %}
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
         {% block body %}{% endblock %}
         
     </body>

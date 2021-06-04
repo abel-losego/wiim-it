@@ -1,20 +1,479 @@
-{% extends 'base.html.twig' %}
 
-{% block title %}Hello SiteController!{% endblock %}
+{% extends 'base-index.html.twig' %}
+
+{% block title %}Home{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <section class="bg-half-170 d-table w-100" style="background: url({{ asset('build/images/modern01.jpg') }}) center center;" id="home">
+            <div class="bg-overlay"></div>
+            <div class="container">
+                <div class="row align-items-center mt-md-5">
+                    
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+                    <div class="col-lg-7 col-md-6 order-1 order-md-2">
+                        <div class="title-heading mt-4 ms-lg-4">
+                            <h1 class="heading title-dark text-white mb-3">Fiabilité et sécurité au service de votre entreprise </h1>
+                            <p class="para-desc para-dark text-light">Nous vous proposons des solutions de sauvegarde en ligne adaptées à votre budget et à vos attentes</p>
+                            <div class="mt-4 pt-2">
+                                <a href="{{ path('app_register')}}" class="btn btn-primary m-1">Démarrer l'inscription <i class="uil uil-angle-right-b"></i></a>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div><!--end container--> 
+        </section><!--end section-->
+        <!-- Hero End -->
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/administrateur/Desktop/wiim/src/Controller/SiteController.php'|file_link(0) }}">src/Controller/SiteController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/administrateur/Desktop/wiim/templates/site/index.html.twig'|file_link(0) }}">templates/site/index.html.twig</a></code></li>
-    </ul>
-</div>
+        <!-- Shape Start -->
+        <div class="position-relative">
+            <div class="shape overflow-hidden text-white">
+                <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+                </svg>
+            </div>
+        </div>
+        <!--Shape End-->
+
+        <!-- Partners start -->
+        <section class="py-4 border-bottom">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-2 col-md-2 col-6 text-center py-4">
+                        <img src="{{ asset('build/images/google.svg') }}" class="avatar avatar-ex-sm" alt="">
+                    </div><!--end col-->
+
+                    <div class="col-lg-2 col-md-2 col-6 text-center py-4">
+                        <img src="{{ asset('build/images/synology.svg') }}" class="avatar avatar-ex-sm" alt="">
+                    </div><!--end col-->
+                    
+                    <div class="col-lg-2 col-md-2 col-6 text-center py-4">
+                        <img src="{{ asset('build/images/lenovo.svg') }}" class="avatar avatar-ex-sm" style="fill:#8C98A4;" alt="">
+                    </div><!--end col-->
+                    
+                    <div class="col-lg-2 col-md-2 col-6 text-center py-4">
+                        <img src="{{ asset('build/images/Microsoft.svg') }}" class="avatar avatar-ex-sm" alt="">
+                    </div><!--end col-->
+                    
+                    <div class="col-lg-2 col-md-2 col-6 text-center py-4">
+                        <img src="{{ asset('build/images/amazon.svg') }}" class="avatar avatar-ex-sm" alt="">
+                    </div><!--end col-->
+                    
+                    <div class="col-lg-2 col-md-2 col-6 text-center py-4">
+                        <img src="{{ asset('build/images/techdata.svg') }}" class="avatar avatar-ex-sm" alt="">
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div><!--end container-->
+        </section><!--end section-->
+        <!-- Partners End -->
+
+        <!-- Feature Start -->
+        <section class="section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 text-center">
+                        <div class="section-title mb-4 pb-2">
+                            <h4 class="title mb-4">Fiabilité et Sécurité</h4>
+                            <p class="text-muted para-desc mb-0 mx-auto">Commencez à travailler avec <span class="text-primary fw-bold">Wiim-It</span> et ne vous inquiétez plus pour vos sauvegardes</p>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+
+                <div class="row">
+                    <div class="col-md-4 col-12 mt-5">
+                        <div class="features text-center">
+                            <div class="image position-relative d-inline-block">
+                                <i class="uil uil-edit-alt h1 text-primary"></i>
+                            </div>
+
+                            <div class="content mt-4">
+                                <h5>Accessibilité et Acccompagnement</h5>
+                                <p class="text-muted mb-0">Nos équipes sont à votre disposition pour que vous d'abordiez votre activité plus sereinement </p>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                    
+                    <div class="col-md-4 col-12 mt-5">
+                        <div class="features text-center">
+                            <div class="image position-relative d-inline-block">
+                                <i class="uil uil-vector-square h1 text-primary"></i>
+                            </div>
+
+                            <div class="content mt-4">
+                                <h5>Simplicité d'utilisation</h5>
+                                <p class="text-muted mb-0">Nous recherchons jour après jour la simplicité pour permettre à tous nos clients de profiter pleinement de nos services</p>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                    
+                    <div class="col-md-4 col-12 mt-5">
+                        <div class="features text-center">
+                            <div class="image position-relative d-inline-block">
+                                <i class="uil uil-file-search-alt h1 text-primary"></i>
+                            </div>
+
+                            <div class="content mt-4">
+                                <h5>Recherche de performances</h5>
+                                <p class="text-muted mb-0"> Nos services et notre expérience vous permettront d'avoir la meilleure expérience, la plus adaptée à votre situation</p>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div><!--end container-->
+
+            <!-- About Us-->
+            <div class="container mt-100 mt-60">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 col-md-5">
+                        <div class="position-relative">
+                            <img src="{{ asset('build/images/about.jpg') }}" class="rounded img-fluid mx-auto d-block" alt="">
+                            <!-- Lien vers video youtube 
+                            <div class="play-icon">
+                                <a href="#!" data-type="youtube" data-id="yba7hPeTSjk" class="play-btn lightbox">
+                                    <i class="mdi mdi-play text-primary rounded-circle bg-white shadow"></i>
+                                </a>
+                            </div>-->
+                        </div>
+                    </div><!--end col-->
+
+                    <div class="col-lg-7 col-md-7 mt-4 pt-2 mt-sm-0 pt-sm-0">
+                        <div class="section-title ms-lg-4">
+                            <h4 class="title mb-4">Vivez plus sereinement</h4>
+                            <p class="text-muted">Commencez à travailler avec <span class="text-primary fw-bold">Wiim_It</span> et vous aurez accès à un des meilleurs services de sauvegarde en ligne sur le marché</p>
+                            <ul class="list-unstyled text-muted">
+                                <li class="mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>Solution de sauvegarde en ligne pour votre future</li>
+                                <li class="mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>Nos talents à vos côtés pour vous accompagner</li>
+                                <li class="mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>Dupliqué votre réseau sur le cloud pour le rendre </li>
+                            </ul>
+                            <a href="javascript:void(0)" class="btn btn-primary mt-3">Buy Now <i class="uil uil-angle-right-b"></i></a>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div><!--end container-->
+
+            <div class="container mt-100 mt-60">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
+                        <div class="d-flex key-feature align-items-center p-3 rounded shadow">
+                            <div class="icon text-center rounded-circle me-3">
+                                <i data-feather="monitor" class="fea icon-ex-md text-primary"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="title mb-0">Fully Responsive</h4>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                    
+                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
+                        <div class="d-flex key-feature align-items-center p-3 rounded shadow">
+                            <div class="icon text-center rounded-circle me-3">
+                                <i data-feather="heart" class="fea icon-ex-md text-primary"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="title mb-0">Browser Compatibility</h4>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                    
+                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
+                        <div class="d-flex key-feature align-items-center p-3 rounded shadow">
+                            <div class="icon text-center rounded-circle me-3">
+                                <i data-feather="eye" class="fea icon-ex-md text-primary"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="title mb-0">Retina Ready</h4>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                    
+                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
+                        <div class="d-flex key-feature align-items-center p-3 rounded shadow">
+                            <div class="icon text-center rounded-circle me-3">
+                                <i data-feather="bold" class="fea icon-ex-md text-primary"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="title mb-0">Based On Bootstrap 5</h4>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                    
+                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
+                        <div class="d-flex key-feature align-items-center p-3 rounded shadow">
+                            <div class="icon text-center rounded-circle me-3">
+                                <i data-feather="feather" class="fea icon-ex-md text-primary"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="title mb-0">Feather Icons</h4>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                    
+                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
+                        <div class="d-flex key-feature align-items-center p-3 rounded shadow">
+                            <div class="icon text-center rounded-circle me-3">
+                                <i data-feather="code" class="fea icon-ex-md text-primary"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="title mb-0">Built With SASS</h4>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                    
+                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
+                        <div class="d-flex key-feature align-items-center p-3 rounded shadow">
+                            <div class="icon text-center rounded-circle me-3">
+                                <i data-feather="user-check" class="fea icon-ex-md text-primary"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="title mb-0">W3c Valid Code</h4>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                    
+                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
+                        <div class="d-flex key-feature align-items-center p-3 rounded shadow">
+                            <div class="icon text-center rounded-circle me-3">
+                                <i data-feather="git-merge" class="fea icon-ex-md text-primary"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="title mb-0">Flaticon Icons</h4>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                    
+                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
+                        <div class="d-flex key-feature align-items-center p-3 rounded shadow">
+                            <div class="icon text-center rounded-circle me-3">
+                                <i data-feather="settings" class="fea icon-ex-md text-primary"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="title mb-0">Easy to customize</h4>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                    
+                    <div class="col-12 text-center">
+                        <a href="javascript:void(0)" class="btn btn-primary">En savoir plus <i class="uil uil-angle-right-b align-middle"></i></a>
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div><!--end container-->
+
+            <div class="container mt-100 mt-60">
+                <div class="row justify-content-center">
+                    <div class="col-12 text-center">
+                        <div class="section-title mb-4 pb-2">
+                            <h4 class="title mb-4">Tout savoir sur le <span class="text-primary">cloud WIIM-IT</span></h4>
+                            <p class="text-muted para-desc mx-auto mb-0">Commencer avec <span class="text-primary fw-bold">Wiim-IT</span> vous permettra de vous prémunir face à de nombreux risques </p>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+
+                <div class="row" id="counter">
+                    <div class="col-md-3 col-6 mt-4 pt-2">
+                        <div class="counter-box text-center">
+                            <img src="images/illustrator/Asset190.svg" class="avatar avatar-small" alt="">
+                            <h2 class="mb-0 mt-4"><span class="counter-value" data-target="45000">11000</span>€</h2>
+                            <h6 class="counter-head text-muted">Investment</h6>
+                        </div><!--end counter box-->
+                    </div>
+
+                    <div class="col-md-3 col-6 mt-4 pt-2">
+                        <div class="counter-box text-center">
+                            <img src="images/illustrator/Asset189.svg" class="avatar avatar-small" alt="">
+                            <h2 class="mb-0 mt-4"><span class="counter-value" data-target="9">1</span>+</h2>
+                            <h6 class="counter-head text-muted">Awards</h6>
+                        </div><!--end counter box-->
+                    </div>
+
+                    <div class="col-md-3 col-6 mt-4 pt-2">
+                        <div class="counter-box text-center">
+                            <img src="images/illustrator/Asset186.svg" class="avatar avatar-small" alt="">
+                            <h2 class="mb-0 mt-4"><span class="counter-value" data-target="48002">12050</span>$</h2>
+                            <h6 class="counter-head text-muted">Profitability</h6>
+                        </div><!--end counter box-->
+                    </div>
+
+                    <div class="col-md-3 col-6 mt-4 pt-2">
+                        <div class="counter-box text-center">
+                            <img src="images/illustrator/Asset187.svg" class="avatar avatar-small" alt="">
+                            <h2 class="mb-0 mt-4"><span class="counter-value" data-target="11">3</span>%</h2>
+                            <h6 class="counter-head text-muted">Growth</h6>
+                        </div><!--end counter box-->
+                    </div>
+                </div><!--end row-->
+            </div><!--end container-->
+        </section><!--end section-->
+        <!-- About End -->
+
+        <!-- CTA Start -->
+        <section class="section bg-cta" style="background: url({{ asset('build/images/2.jpg')}}) center center;" id="cta">
+            <div class="bg-overlay"></div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 text-center">
+                        <div class="section-title">
+                            <h3 class="title title-dark text-white mb-4">Nous veillons sur votre futur</h4>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div><!--end container-->
+        </section><!--end section-->
+        <!-- CTA End --> 
+
+        <!-- Price Start -->
+        <section class="section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 text-center">
+                        <div class="section-title mb-4 pb-2">
+                            <h4 class="title mb-4">Sauvegarder votre avenir</h4>
+                            <p class="text-muted para-desc mb-0 mx-auto">Commencez <span class="text-primary fw-bold">WIIM-IT</span> dès maintenant</p>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+
+                <div class="row">
+                    
+                    
+                    
+                    {% for article in articles %}
+                    <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2">
+                        <div class="card pricing-rates business-rate shadow bg-light border-0 rounded">
+                            {% if article.best == true %}
+                            <div class="ribbon ribbon-right ribbon-warning overflow-hidden"><span class="text-center d-block shadow small h6">Best</span></div>
+                            {% endif %}
+                            <div class="card-body">
+                                <h6 class="title fw-bold text-uppercase text-primary mb-4">{{ article.name }}</h6>
+                                <div class="d-flex mb-4">
+                                   
+                                    <span class="h4 mb-0 mt-2">€</span>
+                                    <span class="price h1 mb-0">{{ article.price}}</span>
+                                    <span class="h4 align-self-end mb-1">/mois</span>
+                                </div>
+                                
+                                <ul class="list-unstyled mb-0 ps-0">
+                                    {% for service in article.services %}
+                                    <li class="h6 text-muted mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>{{ service.description }}</li>
+                                    {% endfor %}
+                                </ul>
+                                <a id="checkout-button" name="{{ article.id }}"class="btn btn-primary mt-4">Started Now</a>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                    {% endfor %}
+
+                    <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2">
+                        <div class="card pricing-rates business-rate shadow bg-light border-0 rounded">
+                            <div class="card-body">
+                                <h6 class="title fw-bold text-uppercase text-primary mb-4">Ultimate</h6>
+                                <div class="d-flex mb-4">
+                                    <span class="h4 mb-0 mt-2">$</span>
+                                    <span class="price h1 mb-0">79</span>
+                                    <span class="h4 align-self-end mb-1">/mo</span>
+                                </div>
+                                
+                                <ul class="list-unstyled mb-0 ps-0">
+                                    <li class="h6 text-muted mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>Full Access</li>
+                                    <li class="h6 text-muted mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>Enhanced Security</li>
+                                    <li class="h6 text-muted mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>Source Files</li>
+                                    <li class="h6 text-muted mb-0 dropdown-content"  style="display: none;"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>1 Domain Free</li>
+                                    <li class="h6 text-muted mb-0 dropdown-content" style="display: none;"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>Free Installment</li>
+
+                                </ul>
+                                <!--<input class="dropbtn" onclic="">En savoir plus</button>-->
+                                    <input id="service_show" type="button" value="En savoir plus">
+                                    <script type="text/javascript">
+                                    var togg1 = document.getElementById("service_show");
+                                    var d1 = document.getElementsByClassName("dropdown-content");
+                                    togg1.addEventListener("click", function () {
+                                    
+                                    for(i = 0; i < d1.length; i++){
+                                    if (getComputedStyle(d1[i]).display != "none") {
+                                        d1[i].style.display = "none";
+                                    } else {
+                                        d1[i].style.display = "block";
+                                    }
+                                    }});
+
+                                    function togg() {
+                                    if (getComputedStyle(d2).display != "none") {
+                                        d2.style.display = "none";
+                                    } else {
+                                        d2.style.display = "block";
+                                    }
+                                    }
+
+                                    ;
+                                    togg2.onclick = togg;
+                                    </script>
+                                <a id="checkout-button" class="btn btn-primary mt-4">Started Now</a>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div><!--end container-->
+            <!-- Price End -->
+
+            <div class="container mt-100 mt-60">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 col-md-6">
+                        <img src="{{ asset('build/images/test-internet.png')}}" class="img-fluid" alt="">
+                    </div><!--end col-->
+
+                    <div class="col-lg-7 col-md-6 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                        <div class="section-title ms-lg-5">
+                            <h4 class="title mb-4">Le meilleur service fait soulager votre connexion </h4>
+                            <p class="text-muted">Notre technologie se base sur un procédé incrémentale qui limite un maximum l'impact de l'envoi des données sur votre connexion. 
+                            Vous n'aurez uniquement besoin que de XX mb/s de débit pour utiliser notre solution de façon optimale. Vous pouvez tester votre connexion sur un site fiable en cliquant sur le lien :</p>
+                            <script src="https://speedtest.one/api/speedtest.js"></script>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div><!--end container-->
+
+        <!-- Shape Start -->
+        <div class="position-relative">
+            <div class="shape overflow-hidden text-light">
+                <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+                </svg>
+            </div>
+        </div>
+        <!--Shape End-->
+
+        
+{% endblock %}
+{% block javascripts %}
+    <script src="https://js.stripe.com/v3/"></script>
+        <script type="text/javascript">
+            // Create an instance of the Stripe object with your publishable API key
+            var stripe = Stripe('pk_test_51IvdmNKRg3070SDBriqTTX2HhXY9f0AhTuqGfIF8QLwRnBrFaWfFRjT5EXpY0oGILSGQHmtwYVLnUA8DedXPeFlA00pOFB7BJR');
+            var checkoutButton = document.getElementById('checkout-button');
+            /*var path = "/create-checkout-session/"
+            var url = path.concat("1");;*/
+            checkoutButton.addEventListener('click', function() {
+                // Create a new Checkout Session using the server-side endpoint you
+                // created in step 3.
+                document.cookie="name=" + checkoutButton.name;
+                fetch('/create-checkout-session', {
+                method: 'POST',
+                }) 
+                .then(function(response) {
+                return response.json();
+                })
+                .then(function(session) {
+                return stripe.redirectToCheckout({ sessionId : session.id });
+                })
+                .then(function(result) {
+                // If `redirectToCheckout` fails due to a browser or network
+                // error, you should display the localized error message to your
+                // customer using `error.message`.
+                if (result.error) {
+                    alert(result.error.message);
+                }
+                })
+                .catch(function(error) {
+                console.error('Error:', error);
+                });
+            });
+        </script>
 {% endblock %}

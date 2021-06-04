@@ -3,7 +3,7 @@
 {% block title %}Inscription{% endblock %}
 
 {% block body %}
-    
+<!-- Rendu visuel du de la page inscription -->  
 
 
 
@@ -19,7 +19,8 @@
         <!-- Loader -->
         
         <div class="back-to-home rounded d-none d-sm-block">
-            <a href="" class="btn btn-icon btn-primary"><i data-feather="home" class="icons"></i></a>
+            <a href="{{ path('home')}}" class="btn btn-icon btn-primary"><img src="{{ asset('build/images/home-page-white.png')}}" class="icons"></a>
+            
         </div>
 
         <!-- Hero Start -->
@@ -33,44 +34,62 @@
                                     <div class="card border-0" style="z-index: 1">
                                         <div class="card-body p-0">
                                             <h4 class="card-title text-center">Inscription</h4>
-                                            <form class="login-form mt-4">
+                                            <div class="login-form mt-4">
                                                 <div class="row">
-                                                    {{ form_start(registrationForm, {'attr': {'class': 'form-control ps-5'} }) }}
-                                                    {{ form_widget(registrationForm.email, {'attr': {'label': 'Email'}}) }}
-                                                    {{ form_widget(registrationForm.password)}}
-                                                    {{ form_widget(registrationForm.agreeTerms) }}
-                                                    <button class="btn btn-primary" type="submit">Register</button>
+                                                    {{ form_start(registrationForm) }}
+
+                                                        <h5>{{ form_label(registrationForm.email, 'Email', {'attr': {'class': 'form-label'}}) }} <span class="text-danger">*</span></h5>
+                                                        {{ form_errors(registrationForm.email) }}
+                                                        {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control ps-5', 'placeholder': "Email"}}) }}
+
+                                                        <h5>{{ form_label(registrationForm.password, 'Mot de passe ', {'attr': {'class': 'form-label'}}) }} <span class="text-danger">*</span></h5>
+                                                        {{ form_errors(registrationForm.password) }}
+                                                        {{ form_widget(registrationForm.password, {'attr': {'class': 'form-control ps-5', 'placeholder': "Mot de passe"}}) }}
+
+                                                        <h5>{{ form_label(registrationForm.confirm_password, 'Confirmation ', {'attr': {'class': 'form-label'}}) }} <span class="text-danger">*</span></h5>
+                                                        {{ form_errors(registrationForm.confirm_password) }}
+                                                        {{ form_widget(registrationForm.confirm_password, {'attr': {'class': 'form-control ps-5', 'placeholder': "Confirmation du mot de passe "}}) }}
+
+                                                        
+                                                        {{ form_row(registrationForm.agreeTerms, {'attr': {'label': 'form-control ps-5'}}) }}
+                                                        <p style="font-height : 300">Retrouver les <a href="">conditions ici</a></p>
+
+                                                        <div class="col-md-12">
+                                                            <div class="d-grid">
+                                                                <button type="submit" class="btn btn-primary">S'inscrire</button>
+                                                            </div>
+                                                        </div>
                                                     {{ form_end(registrationForm) }}
-                                                    <div class="col-lg-12 mt-4 text-center">
+                                                    
+                                                    <!--<div class="col-lg-12 mt-4 text-center">
                                                         <h6>Or Signup With</h6>
                                                         <div class="row">
                                                             <div class="col-6 mt-3">
                                                                 <div class="d-grid">
                                                                     <a href="javascript:void(0)" class="btn btn-light"><i class="mdi mdi-facebook text-primary"></i> Facebook</a>
                                                                 </div>
-                                                            </div><!--end col-->
+                                                            </div><!--end col->
                                                             
                                                             <div class="col-6 mt-3">
                                                                 <div class="d-grid">
                                                                     <a href="javascript:void(0)" class="btn btn-light"><i class="mdi mdi-google text-danger"></i> Google</a>
                                                                 </div>
-                                                            </div><!--end col-->
+                                                            </div><!--end col->
                                                         </div>
-                                                    </div><!--end col-->
-
+                                                    </div><!--end col->-->
                                                     <div class="mx-auto">
-                                                        <p class="mb-0 mt-3"><small class="text-dark me-2">Already have an account ?</small> <a href="auth-cover-login.html" class="text-dark fw-bold">Sign in</a></p>
+                                                        <p class="mb-0 mt-3"><small class="text-dark me-2">Déjà un compte ?</small> <a href="{{ path('app_login')}}" class="text-dark fw-bold">Se connecter</a></p>
                                                     </div>
                                                 </div><!--end row-->
-                                            </form>  
+                                            </div>  
                                         </div>
                                     </div>
                                 </div>
                             </div><!--end row-->
                         </div> <!-- end about detail -->
                     </div> <!-- end col -->    
-
-                    <div class="col-lg-8 offset-lg-4 padding-less img order-1" style="/assets/images/user/02.jpg" data-jarallax='{"speed": 0.5}'></div><!-- end col -->    
+                    
+                   <div class="col-lg-8 offset-lg-4 padding-less img order-1" style="background-image: url({{ asset('build/images/02.jpg') }})"></div>   
                 </div><!--end row-->
             </div><!--end container fluid-->
         </section><!--end section-->

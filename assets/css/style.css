@@ -39,8 +39,11 @@
 @media (min-width: 1400px) {
   .container {
     max-width: 1140px !important;
+    
   }
 }
+
+
 
 .row > * {
   position: relative;
@@ -2003,7 +2006,7 @@ p {
   left: 0;
   top: 0;
   z-index: 999;
-  background-color: transparent;
+  background-color: white;
   border: 0;
   transition: all .5s ease;
 }
@@ -2066,6 +2069,7 @@ p {
   padding: 0;
   margin: 0;
   cursor: pointer;
+  
 }
 
 #topnav .navbar-toggle .lines {
@@ -3068,6 +3072,9 @@ p {
   }
 }
 
+.test {
+  margin-bottom: 75 px;
+}
 /*********************************/
 /*         Features & Services   */
 /*===============================*/
@@ -4902,3 +4909,10 @@ p {
   padding: 30px 0;
 }
 /*# sourceMappingURL=style.css.map */
+
+/*Ajouter par abel */
+
+.dropdown-content {
+  display: none;
+ }
+ .dropdown:hover.dropdown-content {display: block;}
