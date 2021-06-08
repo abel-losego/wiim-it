@@ -70,7 +70,7 @@ class UserAuthenticator extends AbstractFormLoginAuthenticator implements Passwo
         $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']]);
 
         if (!$user) {
-            throw new UsernameNotFoundException('Email could not be found.');
+            throw new UsernameNotFoundException('Votre adresse email n\'a pas pu été trouvé');
         }
 
         return $user;

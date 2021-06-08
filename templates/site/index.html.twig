@@ -351,11 +351,19 @@
                                 </div>
                                 
                                 <ul class="list-unstyled mb-0 ps-0">
-                                    {% for service in article.services %}
+                                    {% for service in article.services|slice(0, 1) %}
                                     <li class="h6 text-muted mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>{{ service.description }}</li>
                                     {% endfor %}
+                                    {% for service in article.services[1:4] %}
+                                    <li class="h6 text-muted mb-0 dropdown-content" id="name-{{ article.id }}" style="display: none;"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>{{ service.description }}</li>
+                                    
+                                    {% endfor %}
+                                    {% if article.services|length > 1 %}
+                                    <input id="service_show" class="btn btn-primary mt-4" type="button" name="name-{{ article.id }}" value="name-{{ article.id }}">
+                                    {% endif %}
+                                    
                                 </ul>
-                                <a id="checkout-button" name="{{ article.id }}"class="btn btn-primary mt-4">Started Now</a>
+                                <a id="checkout-button" onclick="document.cookie="test=" + {{ article.id }};" name="{{ article.id }}" class="btn btn-primary mt-4">Started Now</a>
                             </div>
                         </div>
                     </div><!--end col-->
@@ -375,36 +383,13 @@
                                     <li class="h6 text-muted mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>Full Access</li>
                                     <li class="h6 text-muted mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>Enhanced Security</li>
                                     <li class="h6 text-muted mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>Source Files</li>
-                                    <li class="h6 text-muted mb-0 dropdown-content"  style="display: none;"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>1 Domain Free</li>
+                                    
                                     <li class="h6 text-muted mb-0 dropdown-content" style="display: none;"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>Free Installment</li>
 
                                 </ul>
                                 <!--<input class="dropbtn" onclic="">En savoir plus</button>-->
                                     <input id="service_show" type="button" value="En savoir plus">
-                                    <script type="text/javascript">
-                                    var togg1 = document.getElementById("service_show");
-                                    var d1 = document.getElementsByClassName("dropdown-content");
-                                    togg1.addEventListener("click", function () {
                                     
-                                    for(i = 0; i < d1.length; i++){
-                                    if (getComputedStyle(d1[i]).display != "none") {
-                                        d1[i].style.display = "none";
-                                    } else {
-                                        d1[i].style.display = "block";
-                                    }
-                                    }});
-
-                                    function togg() {
-                                    if (getComputedStyle(d2).display != "none") {
-                                        d2.style.display = "none";
-                                    } else {
-                                        d2.style.display = "block";
-                                    }
-                                    }
-
-                                    ;
-                                    togg2.onclick = togg;
-                                    </script>
                                 <a id="checkout-button" class="btn btn-primary mt-4">Started Now</a>
                             </div>
                         </div>
@@ -444,16 +429,17 @@
 {% endblock %}
 {% block javascripts %}
     <script src="https://js.stripe.com/v3/"></script>
-        <script type="text/javascript">
+    <script type="text/javascript">
             // Create an instance of the Stripe object with your publishable API key
             var stripe = Stripe('pk_test_51IvdmNKRg3070SDBriqTTX2HhXY9f0AhTuqGfIF8QLwRnBrFaWfFRjT5EXpY0oGILSGQHmtwYVLnUA8DedXPeFlA00pOFB7BJR');
             var checkoutButton = document.getElementById('checkout-button');
             /*var path = "/create-checkout-session/"
             var url = path.concat("1");;*/
-            checkoutButton.addEventListener('click', function() {
+            //for (var checkoutButton in checkoutButtons) {
+                checkoutButton.addEventListener('click', function() {
                 // Create a new Checkout Session using the server-side endpoint you
                 // created in step 3.
-                document.cookie="name=" + checkoutButton.name;
+                //document.cookie="test=" + checkoutButton.name;
                 fetch('/create-checkout-session', {
                 method: 'POST',
                 }) 
@@ -474,6 +460,36 @@
                 .catch(function(error) {
                 console.error('Error:', error);
                 });
-            });
-        </script>
+            })
+            //}
+            ;
+    </script>
+    <script type="text/javascript">
+        var togg1 = document.getElementsByClassName("service_show");
+        var d1 = document.getElementsByClassName("dropdown-content");
+        togg1.addEventListener("click", function () {
+        
+        for(i = 0; i < d1.length; i++){
+            
+            if(togg1.name == d1[i].id) {
+                
+                if (getComputedStyle(d1[i]).display != "none") {
+                    d1[i].style.display = "none";
+                } else {
+                    d1[i].style.display = "block";
+                }
+                }}
+        });
+
+        function togg() {
+        if (getComputedStyle(d2).display != "none") {
+            d2.style.display = "none";
+        } else {
+            d2.style.display = "block";
+        }
+        }
+
+        ;
+        togg2.onclick = togg;
+    </script>
 {% endblock %}

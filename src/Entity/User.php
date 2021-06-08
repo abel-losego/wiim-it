@@ -53,6 +53,26 @@ class User implements UserInterface
      */
     private $stripe_id = null;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $surname;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $phone;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $society;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -159,6 +179,54 @@ class User implements UserInterface
     public function setStripeId(string $stripe_id): self
     {
         $this->stripe_id = $stripe_id;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getSurname(): ?string
+    {
+        return $this->surname;
+    }
+
+    public function setSurname(string $surname): self
+    {
+        $this->surname = $surname;
+
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(string $phone): self
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getSociety(): ?string
+    {
+        return $this->society;
+    }
+
+    public function setSociety(string $society): self
+    {
+        $this->society = $society;
 
         return $this;
     }

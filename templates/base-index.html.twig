@@ -194,9 +194,9 @@
         <!-- Navbar End -->
         <div id="body-div" >
         <!-- Message flash pour la confirmation du compte -->
-        {% for messages in app.flashes(['verify_email_error','success']) %}
+        {% for messages in app.flashes(['verify_email_error','verify_email_check','success']) %}
             {% for message in messages %}
-            <div class="flash-notice">
+            <div class="flash-notice" style="margin-top: 74px;">
                 {{ message }}
             </div>
             {% endfor %}
@@ -316,22 +316,21 @@
 
         
 
-        <script>
+        
             
             
+        {% block javascripts %}    
             
-            {{ encore_entry_script_tags('appli') }}
+            {#{{ encore_entry_script_tags('appli') }}
             {{ encore_entry_script_tags('app') }}
             {{ encore_entry_script_tags('bootstrap_bundle') }}
             {{ encore_entry_script_tags('slider') }}
             {{ encore_entry_script_tags('plugin_js') }}
             {{ encore_entry_script_tags('feather_js') }}
-            {{ encore_entry_script_tags('tobii') }}
+            {{ encore_entry_script_tags('tobii') }}#}
             
-            
+        {% endblock %}
         
-        {% block javascripts %}{% endblock %}
-        </script>
     </body>
 </html>
         

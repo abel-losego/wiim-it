@@ -194,7 +194,7 @@
         <!-- Navbar End -->
         <div id="body-div" style="margin-top:75px;">
         <!-- Message flash pour la confirmation du compte -->
-        {% for messages in app.flashes(['verify_email_error','success']) %}
+        {% for messages in app.flashes(['verify_email_error','verify_email_check','success']) %}
             {% for message in messages %}
             <div class="flash-notice">
                 {{ message }}

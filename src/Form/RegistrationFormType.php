@@ -44,6 +44,10 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('confirm_password', PasswordType::class)
+            ->add('name')
+            ->add('surname')
+            ->add('phone')
+            ->add('society')
         ;
     }
 
