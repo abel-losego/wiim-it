@@ -31,9 +31,12 @@
                         <div class="cover-user-img d-lg-flex align-items-center">
                             <div class="row">
                                 <div class="col-12">
-                                    <div class="card border-0" style="z-index: 1">
+                                    <div >
                                         <div class="card-body p-0">
-                                            <h4 class="card-title text-center">Inscription</h4>
+                                            
+                                            <h4 class="card-title text-center" id="title_one" >Inscription</h4>
+                                            <h4 class="card-title text-center" id="title_two" style="display: none;">Encore un petit effort !</h4>
+                                            
                                             <div class="login-form mt-4">
                                                 <div class="row">
                                                     
@@ -57,6 +60,7 @@
 
                                                             <div class="col-md-12">
                                                                 <div class="d-grid" style="margin-top: 1rem;">
+                                                                    
                                                                     <button id="togg1" onclick="togg()" class="btn btn-primary">Continuer</button>
                                                                 </div>
                                                             </div>
@@ -81,8 +85,15 @@
                                                         
                                                        
                                                             <div class="col-md-12">
-                                                                <div class="d-grid">
-                                                                    <button type="submit" class="btn btn-primary">S'inscrire</button>
+                                                                
+                                                                <div class="d-grid" style="grid-auto-rows: minmax(10px, auto);">
+                                                                    <div style="grid-column: 1;grid-row: 1;">
+                                                                        <a class="btn btn-icon" style="padding-left : 15%;" onclick="togg()"><img src="{{ asset('build/images/fleche-gauche.svg')}}" style="height: 30px;width: 30px; " class="icon-fleche"></a>                                                                    </div>
+                                                                    <div style="grid-column: 2;grid-row: 1;">
+                                                                        <button type="submit" class="btn btn-primary" style="width: 100%;">S'inscrire</button></a>
+                                                                    </div>
+                                                                    
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -128,17 +139,24 @@
 {% block javascripts %}
     <script type="text/javascript">
         let togg1 = document.getElementById("button-hidden");
-        let d1 = document.getElementById("part_one");
-        let d2 = document.getElementById("part_two");
+        let p1 = document.getElementById("part_one");
+        let p2 = document.getElementById("part_two");
+        let t1 = document.getElementById("title_one");
+        let t2 = document.getElementById("title_two");
+
 
         function togg(){
-            if(getComputedStyle(d1).display != "none"){
-                d1.style.display = "none";
-                d2.style.display = "block";
+            if(getComputedStyle(p1).display != "none"){
+                p1.style.display = "none";
+                p2.style.display = "block";
+                t1.style.display = "none";
+                t2.style.display = "block";
             } else {
                 //Au cas où on rajoute un retour en arrière
-                d1.style.display = "block";
-                d2.style.display = "none";
+                p1.style.display = "block";
+                p2.style.display = "none";
+                t1.style.display = "block";
+                t2.style.display = "none";
             }
         };
         togg1.onclick = togg;

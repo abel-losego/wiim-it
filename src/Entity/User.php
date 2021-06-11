@@ -73,6 +73,11 @@ class User implements UserInterface
      */
     private $society;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $id_doli= null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -227,6 +232,18 @@ class User implements UserInterface
     public function setSociety(string $society): self
     {
         $this->society = $society;
+
+        return $this;
+    }
+
+    public function getIdDoli(): ?string
+    {
+        return $this->id_doli;
+    }
+
+    public function setIdDoli(?string $id_doli): self
+    {
+        $this->id_doli = $id_doli;
 
         return $this;
     }

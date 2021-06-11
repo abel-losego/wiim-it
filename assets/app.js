@@ -15,6 +15,9 @@ import '/assets/css/bootstrap.min.css';
 // Favicon du projet
 import '/assets/images/favicon.ico';
 
+//Icone fleche gauche page inscription 
+
+import '/assets/images/fleche-gauche.svg';
 // Main css des pages de connexion et d'inscription
 
 import '/assets/css/style.css';

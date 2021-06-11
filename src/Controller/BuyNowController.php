@@ -70,7 +70,7 @@ class BuyNowController extends AbstractController
         
         //$id_article = $request->cookie->get('name');
 
-        $id_article_voulu = $_COOKIE["test"];
+        $id_article_voulu = $_COOKIE["article"];
         $article_voulu = $repo->find($id_article_voulu);
         //$response->headers->setCookie(Cookie::create('foo', 'bar'));
 

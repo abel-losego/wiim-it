@@ -338,20 +338,20 @@
                     {% for article in articles %}
                     <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2">
                         <div class="card pricing-rates business-rate shadow bg-light border-0 rounded">
-                            {% if article.best == true %}
+                            {#{% if article.best == true %}#}
                             <div class="ribbon ribbon-right ribbon-warning overflow-hidden"><span class="text-center d-block shadow small h6">Best</span></div>
-                            {% endif %}
+                            {#{% endif %}#}
                             <div class="card-body">
-                                <h6 class="title fw-bold text-uppercase text-primary mb-4">{{ article.name }}</h6>
+                                <h6 class="title fw-bold text-uppercase text-primary mb-4">{{article.label}}</h6>
                                 <div class="d-flex mb-4">
                                    
                                     <span class="h4 mb-0 mt-2">€</span>
-                                    <span class="price h1 mb-0">{{ article.price}}</span>
+                                    <span class="price h1 mb-0">{{article.price_ttc}}</span>
                                     <span class="h4 align-self-end mb-1">/mois</span>
                                 </div>
                                 
                                 <ul class="list-unstyled mb-0 ps-0">
-                                    {% for service in article.services|slice(0, 1) %}
+                                    {#{% for service in article.services|slice(0, 1) %}
                                     <li class="h6 text-muted mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>{{ service.description }}</li>
                                     {% endfor %}
                                     {% for service in article.services[1:4] %}
@@ -359,13 +359,14 @@
                                     
                                     {% endfor %}
                                     {% if article.services|length > 1 %}
-                                    <input id="service_show" class="btn btn-primary mt-4" type="button" name="name-{{ article.id }}" value="name-{{ article.id }}">
-                                    {% endif %}
+                                    <input id="service_show" class="btn btn-primary mt-4" type="button" name="name-{{ article.id }}" value="name-{{ article.id }}">>
+                                    {% endif %}#}
                                     
                                 </ul>
-                                <a id="checkout-button" onclick="document.cookie="test=" + {{ article.id }};" name="{{ article.id }}" class="btn btn-primary mt-4">Started Now</a>
+                                <a id="checkout-button" onclick="click()" data-id="price_1Iw6VEKRg3070SDB9ar6TDPo" class="btn btn-primary mt-4">Started Now</a>
                             </div>
                         </div>
+                        
                     </div><!--end col-->
                     {% endfor %}
 
@@ -390,7 +391,7 @@
                                 <!--<input class="dropbtn" onclic="">En savoir plus</button>-->
                                     <input id="service_show" type="button" value="En savoir plus">
                                     
-                                <a id="checkout-button" class="btn btn-primary mt-4">Started Now</a>
+                                <a href="http://localhost:7681/public/payment/newpayment.php?amount=9.99" class="btn btn-primary mt-4">Started Now</a>
                             </div>
                         </div>
                     </div><!--end col-->
@@ -436,10 +437,10 @@
             /*var path = "/create-checkout-session/"
             var url = path.concat("1");;*/
             //for (var checkoutButton in checkoutButtons) {
-                checkoutButton.addEventListener('click', function() {
+                function click() {
                 // Create a new Checkout Session using the server-side endpoint you
                 // created in step 3.
-                //document.cookie="test=" + checkoutButton.name;
+                document.cookie="article=" + checkoutButton.dataset.id;
                 fetch('/create-checkout-session', {
                 method: 'POST',
                 }) 

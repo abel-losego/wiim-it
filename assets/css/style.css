@@ -4916,3 +4916,11 @@ p {
   display: none;
  }
  .dropdown:hover.dropdown-content {display: block;}
+
+ .icon-fleche {
+
+  background-position: left center;
+  background-repeat: no-repeat;
+  
+  padding-left: 16px; /* Or size of icon + spacing */
+  }

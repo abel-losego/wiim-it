@@ -16,6 +16,7 @@ use Symfony\Component\Asset\VersionStrategy\EmptyVersionStrategy;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use App\Dolibarr\Dolibarr;
 
 class RegistrationController extends AbstractController
 {
@@ -27,7 +28,7 @@ class RegistrationController extends AbstractController
     }
 
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder,/*LoginFormAuthentificator $login, GuardAuthenticatorHandler $guard*/): Response
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, Dolibarr $dolibarr/*LoginFormAuthentificator $login, GuardAuthenticatorHandler $guard*/): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -47,6 +48,17 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
+            //Création de compte dolibarr 
+            $newClient = [
+                "name" 			=> "nom société client",
+                "email"			=> "email société client",
+                "client" 		=> "1",
+                "code_client"	=> "-1",
+                "phone" 		=> '636367637',
+                "ref_ext" 		=> 'chfhfdvfhfvhf'
+            ];
+            $newClientResult = $dolibarr->CallAPI("POST", "thirdparties", json_encode($newClient));
+            $newClientResult = json_decode($newClientResult, true);
             //envoi d'un email de confirmation du compte
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                 (new TemplatedEmail())
@@ -75,7 +87,7 @@ class RegistrationController extends AbstractController
     }
 
     #[Route('/verify/email', name: 'app_verify_email')]
-    public function verifyUserEmail(Request $request): Response
+    public function verifyUserEmail(Request $request, Dolibarr $dolibarr): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
@@ -100,11 +112,29 @@ class RegistrationController extends AbstractController
 
         ]);
         $user= $this->getUser();
+
+        $newClient = [
+            "name" 			=> $user->getSociety(),
+            "email"			=> $user->getEmail(),
+            "ref_ext" 		=> $customer->id,
+            "phone" 		=> $user->getPhone(),
+            "client" => 3,
+    
+        ];
+        $newClientResult = $dolibarr->CallAPI("PUT", "societe", json_encode($newClient));
+        $newClientResult = json_decode($newClientResult, true);
+        $clientDoliId = $newClientResult;
+
+        
+        
+        
+        $user->setIdDoli($clientDoliId);
         $user->setStripeId($customer->id);
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($user);
         $entityManager->flush();
 
+        
         return $this->redirectToRoute('home');
     }
 }
