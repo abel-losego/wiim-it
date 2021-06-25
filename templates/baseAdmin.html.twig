@@ -1,0 +1,29 @@
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Admin</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- all css here -->
+		<!-- bootstrap v3.3.6 css -->
+        {% block stylesheets %}
+            {# 'app' must match the first argument to addEntry() in webpack.config.js #}
+            {{ encore_entry_link_tags('app_admin') }}
+
+            <!-- Renders a link tag (if your module requires any CSS)
+                 <link rel="stylesheet" href="/build/app.css"> -->
+        {% endblock %}
+    </head>
+    <body>
+        {% for messages in app.flashes(['modify_succes','delete_success']) %}
+            {% for message in messages %}
+            <div class="flash-notice">
+                {{ message }}
+            </div>
+            {% endfor %}
+        {% endfor %}
+        {% block body %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,52 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Articles - Admin{% endblock %}
+
+{% block body %}
+
+    {% if app.user %}
+        <div class="mb-3" id="adminDiv">
+            Vous êtes connectés via {{ app.user.username }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>
+        </div>
+    {% endif %}
+
+    
+    <div id="adminDiv">
+        <h1>Liste de tous les articles</h1><p><small>triés par id (et donc ordre chronologique de création)</small></p>
+    </div>
+
+    
+    
+    {{ form_start(articleForm) }}
+        <div>
+            <h5>{{ form_label(articleForm.name, 'Nom :', {'attr': {'class': 'form-label'}}) }} <span class="text-danger">*</span></h5>
+            {{ form_errors(articleForm.name) }}
+            {{ form_widget(articleForm.name, {'attr': {'class': 'form-control ps-5', 'placeholder': "Nom "}}) }}
+            
+            <h5>{{ form_label(articleForm.price, 'Prix (en centimes) :', {'attr': {'class': 'form-label'}}) }} <span class="text-danger">*</span></h5>
+            {{ form_errors(articleForm.price) }}
+            {{ form_widget(articleForm.price, {'attr': {'class': 'form-control ps-5', 'placeholder': "Prix"}}) }}
+
+            <h5>{{ form_label(articleForm.ref, 'Reférences (Suivre la synthaxe établie) :', {'attr': {'class': 'form-label'}}) }} <span class="text-danger">*</span></h5>
+            {{ form_errors(articleForm.ref) }}
+            {{ form_widget(articleForm.ref, {'attr': {'class': 'form-control ps-5', 'placeholder': "Ref"}}) }}
+
+            
+            {{ form_row(articleForm.services) }}
+
+            
+
+            <h5>{{ form_label(articleForm.best, 'Notre sélection ?', {'attr': {'class': 'form-label'}}) }} <span class="text-danger">*</span></h5>
+            {{ form_row(articleForm.best, {'attr': {'label': 'form-control ps-5'}}) }}
+            
+            <select multiple class=form-control>
+                <option value="Douze"></option>
+            </select>
+            <div style="grid-column: 2;grid-row: 1;">
+                <button type="submit" class="btn btn-primary" style="width: 100%;">S'inscrire</button></a>
+            </div>
+            
+                
+        </div>
+    {{ form_end(articleForm) }}
+{% endblock %} 

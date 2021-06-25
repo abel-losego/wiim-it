@@ -54,6 +54,11 @@ class User implements UserInterface
     private $stripe_id = null;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $id_doli= null;
+    
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $name;
@@ -74,9 +79,11 @@ class User implements UserInterface
     private $society;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="boolean")
      */
-    private $id_doli= null;
+    private $is_active = true;
+
+    
 
     public function getId(): ?int
     {
@@ -244,6 +251,18 @@ class User implements UserInterface
     public function setIdDoli(?string $id_doli): self
     {
         $this->id_doli = $id_doli;
+
+        return $this;
+    }
+
+    public function getIsActive(): ?bool
+    {
+        return $this->is_active;
+    }
+
+    public function setIsActive(bool $is_active): self
+    {
+        $this->is_active = $is_active;
 
         return $this;
     }

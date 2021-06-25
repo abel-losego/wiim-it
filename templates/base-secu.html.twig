@@ -16,7 +16,7 @@
     </head>
     <body>
         <div class="modal" >
-        {% for messages in app.flashes(['verify_email_error','success']) %}
+        {% for messages in app.flashes(['verify_email_error','success','stripe_customer_error']) %}
             {% for message in messages %}
             <div class="flash-notice">
                 {{ message }}

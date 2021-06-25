@@ -1,0 +1,23 @@
+/* ------------------------------------
+1. Page admin
+---------------------------------------*/
+
+#adminDiv{ 
+    text-align: center;
+    font-weight: bold; 
+  
+  }
+#adminDivUser{ 
+    text-align: center;
+    margin : auto;
+    font-weight: bold; 
+
+  }
+#adminDivArticle{ 
+    text-align: center;
+    font-weight: bold; 
+    width: 5%;
+  }
+
+
+  

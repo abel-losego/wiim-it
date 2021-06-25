@@ -6,8 +6,7 @@ namespace App\Dolibarr;
 class Dolibarr
 {
 
-    
-    public function CallAPI($method,$type, $data = null)
+    public function CallAPI($method, $type, $data = null)
     {
         $curl = curl_init();
         $httpheader = ['DOLAPIKEY: '.'RY9yUvLqxkwJ73q1L14M57bUxx5sSI6V'];
@@ -23,18 +22,17 @@ class Dolibarr
                     curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
 
                 break;    
+            
             case "PUT":
-
-            curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PUT');
+                curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PUT');
                 $httpheader[] = "Content-Type:application/json";
 
                 if ($data)
-                    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-
+                curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
                 break;
             default:
                 if ($data)
-                    $url = sprintf("%s?%s", $url.$type, http_build_query($data));
+                    $url = sprintf("%s?%s", $url, http_build_query($data));
         }
 
         // Optional Authentication:

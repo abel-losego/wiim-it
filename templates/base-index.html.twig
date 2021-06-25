@@ -24,7 +24,7 @@
                     <!-- Logo container, contenant plutôt le nom de l'entreprise à l'écrit--><img src="images/logo-light.png" height="24" class="logo-dark-mode" alt="">
                 </a>
                 <div class="buy-button">
-                    <img href="{{ path('app_login')}}" height="40" src="{{ asset('build/images/user-icon.svg') }}" class="btn btn-primary">
+                    <a href="{{ path('app_login')}}"><img  height="40" src="{{ asset('build/images/user-icon.svg') }}" class="btn btn-primary"></a>
                 </div><!--end login button-->
                 {% if app.user and app.user.getStripeId() != null %} 
                 <div class="buy-button">
@@ -51,139 +51,10 @@
                     <!-- Navigation Menu-->   
                     <ul class="navigation-menu">
                         <li><a href="{{ path('home')}}" class="sub-menu-item">Home</a></li>
-                        <li class="has-submenu parent-parent-menu-item">
-                            <a href="javascript:void(0)">Landing</a><span class="menu-arrow"></span>
-                            <ul class="submenu megamenu">
-                                <li>
-                                    <ul>
-                                        <li><a href="index-saas.html" class="sub-menu-item">Saas</a></li>
-                                        <li><a href="index-classic-saas.html" class="sub-menu-item">Classic Saas</a></li>
-                                        <li><a href="index-agency.html" class="sub-menu-item">Agency</a></li>
-                                        
-                                    </ul>
-                                </li>
-
-                                <li>
-                                    <ul>
-                                        <li><a href="index-it-solution.html" class="sub-menu-item">IT Solution </a></li>
-                                        <li><a href="index-business.html" class="sub-menu-item">Business</a></li>
-                                        <li><a href="index-modern-business.html" class="sub-menu-item">Modern Business</a></li>
-                                        
-                                    </ul>
-                                </li>
-
-                                <li>
-                                    <ul>
-                                        <li><a href="index-finance.html" class="sub-menu-item">Finance <i class="mdi mdi-star align-middle text-warning"></i></a></li>
-                                        <li><a href="index-videocall.html" class="sub-menu-item">Video Conference <i class="mdi mdi-star align-middle text-warning"></i></a></li>
-                                        <li><a href="index-it-solution-two.html" class="sub-menu-item">IT Solution Two <i class="mdi mdi-star align-middle text-warning"></i></a></li>
-                                        
-                                    </ul>
-                                </li>
-                                
-                                <li>
-                                    <ul>
-                                        <li><a href="index-landing-one.html" class="sub-menu-item">Landing One </a></li>
-                                        <li><a href="index-landing-two.html" class="sub-menu-item">Landing Two </a></li>
-                                        <li><a href="index-landing-three.html" class="sub-menu-item">Landing Three </a></li>
-                                        <li><a href="index-landing-four.html" class="sub-menu-item">Landing Four</a></li>
-                                        
-                                    </ul>
-                                </li>
-                                
-                                <li>
-                                    <ul>
-                                        <li><a href="index-event.html" class="sub-menu-item">Event</a></li>
-                                        <li><a href="index-single-product.html" class="sub-menu-item">Product</a></li>
-                                        <li><a href="index-onepage.html" class="sub-menu-item">Saas <span class="badge bg-warning ms-2">Onepage</span></a></li>
-                                    </ul>
-                                </li>   
-                            </ul>
-                        </li>
-        
-                        <li class="has-submenu parent-parent-menu-item">
-                            <a href="javascript:void(0)">Pages</a><span class="menu-arrow"></span>
-                            <ul class="submenu">
-                                <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Company </a><span class="submenu-arrow"></span>
-                                    <ul class="submenu">
-                                        <li><a href="page-aboutus.html" class="sub-menu-item"> About Us</a></li>
-                                        <li><a href="page-aboutus-two.html" class="sub-menu-item"> About Us Two </a></li>
-                                        <li><a href="page-services.html" class="sub-menu-item">Services</a></li>
-                                        <li><a href="page-history.html" class="sub-menu-item">History </a></li>
-                                        <li><a href="page-team.html" class="sub-menu-item"> Team</a></li>
-                                        <li><a href="page-pricing.html" class="sub-menu-item">Pricing</a></li>
-                                    </ul> 
-                                </li>
-                                <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Account </a><span class="submenu-arrow"></span>
-                                    <ul class="submenu">
-                                        <li><a href="account-profile.html" class="sub-menu-item">Profile</a></li>
-                                        <li><a href="account-members.html" class="sub-menu-item">Members </a></li>
-                                        <li><a href="account-works.html" class="sub-menu-item">Works </a></li>
-                                        
-                                    </ul>  
-                                </li>
-                                
-                            </ul>
-                        </li>
-
-                        <li class="has-submenu parent-parent-menu-item">
-                            <a href="javascript:void(0)">Portfolio</a><span class="menu-arrow"></span>
-                            <ul class="submenu megamenu">
-                                <li>
-                                    <ul>
-                                        <li class="megamenu-head">Modern Portfolio</li>
-                                        <li><a href="portfolio-modern-two.html" class="sub-menu-item">Two Column</a></li>
-                                        <li><a href="portfolio-modern-three.html" class="sub-menu-item">Three Column</a></li>
-                                        
-                                    </ul>
-                                </li>
-
-                                <li>
-                                    <ul>
-                                        <li class="megamenu-head">Classic Portfolio</li>
-                                        <li><a href="portfolio-classic-two.html" class="sub-menu-item">Two Column</a></li>
-                                        <li><a href="portfolio-classic-three.html" class="sub-menu-item">Three Column</a></li>
-                                       
-                                    </ul>
-                                </li>
-
-                                <li>
-                                    <ul>
-                                        <li class="megamenu-head">Grid Portfolio</li>
-                                        <li><a href="portfolio-grid-two.html" class="sub-menu-item">Two Column</a></li>
-                                        <li><a href="portfolio-grid-three.html" class="sub-menu-item">Three Column</a></li>
-                                       
-                                    </ul>
-                                </li>
-                                
-                                <li>
-                                    <ul>
-                                        <li class="megamenu-head">Masonry Portfolio</li>
-                                        <li><a href="portfolio-masonry-two.html" class="sub-menu-item">Two Column</a></li>
-                                        <li><a href="portfolio-masonry-three.html" class="sub-menu-item">Three Column</a></li>
-                                        
-                                    </ul>
-                                </li>
-                                
-                                <li>
-                                    <ul>
-                                        <li class="megamenu-head">Portfolio Detail</li>
-                                        <li><a href="portfolio-detail-one.html" class="sub-menu-item">Portfolio One</a></li>
-                                        <li><a href="portfolio-detail-two.html" class="sub-menu-item">Portfolio Two</a></li>
-                                        
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-submenu parent-menu-item">
-                            <a href="javascript:void(0)">Docs</a><span class="menu-arrow"></span>
-                            <ul class="submenu">
-                                <li><a href="documentation.html" class="sub-menu-item">Documentation</a></li>
-                                <li><a href="changelog.html" class="sub-menu-item">Changelog</a></li>
-                                <li><a href="components.html" class="sub-menu-item">Components</a></li>
-                                <li><a href="widget.html" class="sub-menu-item">Widget</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="#catalogue" class="sub-menu-item">Catalogue</a></li>
+                        
+                        <li><a href="{{ path('contact')}}" class="sub-menu-item">Contact</a></li>
+                        
                     </ul><!--end navigation menu-->
                     <div class="buy-menu-btn d-none">
                         <a href="" target="_blank" class="btn btn-primary">Buy Now</a>
@@ -224,45 +95,39 @@
         <footer class="footer bg-light">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4 col-12 mb-0 mb-md-4 pb-0 pb-md-2">
-                        <a href="#" class="logo-footer">
-                            <img src="images/logo-dark.png" height="24" alt="">
+                    <div class="col-lg-3 col-12 mb-0 mb-md-4 pb-0 pb-md-2" style="width: 33%;">
+                        <a href="{{ path('home')}}" class="logo-footer">
+                            <h5 class="text-dark footer-head">WIIM IT</h5>
                         </a>
-                        <p class="mt-4 text-muted">Start working with Landrick that can provide everything you need to generate awareness, drive traffic, connect.</p>
-                        <ul class="list-unstyled social-icon social mb-0 mt-4">
+                        <p class="mt-4 text-muted">Commencer votre expérience Wiim-It dès aujourd'hui, et sauvegarder toutes vos informations dans nos services. Votre sécurité est notre priorité</p>
+                        {#<ul class="list-unstyled social-icon social mb-0 mt-4">
                             <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
                             <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="instagram" class="fea icon-sm fea-social"></i></a></li>
                             <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="twitter" class="fea icon-sm fea-social"></i></a></li>
                             <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="linkedin" class="fea icon-sm fea-social"></i></a></li>
-                        </ul><!--end icon-->
+                        </ul><!--end icon-->#}
                     </div><!--end col-->
                     
-                    <div class="col-lg-2 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                    <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2" style="width: 33%;">
                         <h5 class="text-dark footer-head">Company</h5>
                         <ul class="list-unstyled footer-list mt-4">
-                            <li><a href="page-aboutus.html" class="text-muted"><i class="uil uil-angle-right-b me-1"></i> About us</a></li>
-                            <li><a href="page-services.html" class="text-muted"><i class="uil uil-angle-right-b me-1"></i> Services</a></li>
-                            <li><a href="page-team.html" class="text-muted"><i class="uil uil-angle-right-b me-1"></i> Team</a></li>
-                            <li><a href="page-pricing.html" class="text-muted"><i class="uil uil-angle-right-b me-1"></i> Pricing</a></li>
-                            <li><a href="portfolio-modern-three.html" class="text-muted"><i class="uil uil-angle-right-b me-1"></i> Project</a></li>
-                            <li><a href="page-jobs.html" class="text-muted"><i class="uil uil-angle-right-b me-1"></i> Careers</a></li>
-                            <li><a href="page-blog-grid.html" class="text-muted"><i class="uil uil-angle-right-b me-1"></i> Blog</a></li>
-                            <li><a href="auth-cover-login.html" class="text-muted"><i class="uil uil-angle-right-b me-1"></i> Login</a></li>
+                            <li><a href="{{ path('app_login')}}" class="text-muted"><i class="uil uil-angle-right-b me-1"></i> Connexion</a></li>
+                            <li><a href="{{ path('contact')}}" class="text-muted"><i class="uil uil-angle-right-b me-1"></i> Nous contacter</a></li>
+                            
                         </ul>
                     </div><!--end col-->
                     
-                    <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                    <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0" style="width: 33%;">
                         <h5 class="text-dark footer-head">Usefull Links</h5>
                         <ul class="list-unstyled footer-list mt-4">
-                            <li><a href="page-terms.html" class="text-muted"><i class="uil uil-angle-right-b me-1"></i> Terms of Services</a></li>
-                            <li><a href="page-privacy.html" class="text-muted"><i class="uil uil-angle-right-b me-1"></i> Privacy Policy</a></li>
-                            <li><a href="documentation.html" class="text-muted"><i class="uil uil-angle-right-b me-1"></i> Documentation</a></li>
-                            <li><a href="changelog.html" class="text-muted"><i class="uil uil-angle-right-b me-1"></i> Changelog</a></li>
-                            <li><a href="components.html" class="text-muted"><i class="uil uil-angle-right-b me-1"></i> Components</a></li>
+                            <li><a href="{{ path('app_register')}}" class="text-muted"><i class="uil uil-angle-right-b me-1"></i> Inscription</a></li>
+                            <li><a href="" class="text-muted"><i class="uil uil-angle-right-b me-1"></i> Nos conditions d'utilisations</a></li>
+
+                            
                         </ul>
                     </div><!--end col-->
 
-                    <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                    {#<div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
                         <h5 class="text-dark footer-head">Newsletter</h5>
                         <p class="mt-4 text-muted">Sign up and receive the latest tips via email.</p>
                         <form>
@@ -283,7 +148,7 @@
                                 </div>
                             </div>
                         </form>
-                    </div><!--end col-->
+                    </div><!--end col-->#}
                 </div><!--end row-->
             </div><!--end container-->
         </footer><!--end footer-->
@@ -292,7 +157,7 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="text-sm-start">
-                            <p class="mb-0">© <script>document.write(new Date().getFullYear())</script> WIIM-IT. Design with <i class="mdi mdi-heart text-danger"></i> <!--by Abel LOSEGO - Rennaissance Web--></a>.</p>
+                            <p class="mb-0">© <script>document.write(new Date().getFullYear())</script> WIIM-IT. Design <i class="mdi mdi-heart text-danger"></i> <!--by Abel LOSEGO - Rennaissance Web--></a>.</p>
                         </div>
                     </div><!--end col-->
 

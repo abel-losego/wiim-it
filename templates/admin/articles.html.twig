@@ -1,0 +1,85 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Articles - Admin{% endblock %}
+
+{% block body %}
+
+    {% if app.user %}
+        <div class="mb-3" id="adminDiv">
+            Vous êtes connectés via {{ app.user.username }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>
+        </div>
+    {% endif %}
+
+    
+    <div id="adminDiv">
+        <h1>Liste de tous les articles</h1><p><small>triés par id (et donc ordre chronologique de création)</small></p>
+    </div>
+
+    <div class="row">
+        
+        <div class="col-xs-2 desc" id="adminDivUser" style="float: left;">
+            <p>Id Stripe (price)</p>
+        </div>
+        <div class="col-xs-2 desc" id="adminDivUser" style="float: left;">
+            <p>Id Dolibarr</p>
+        </div>
+        <div class="col-xs-2 desc" id="adminDivUser" style="float: left;">
+            <p>Nom</p>
+        </div>
+        <div class="col-xs-2 desc" id="adminDivUser" style="float: left;">
+            <p>Prix </p>
+        </div>
+        <div class="col-xs-2 desc" id="adminDivUser">
+            <p>Ref</p>
+        </div>
+        
+        {#<div class="col-xs-2 desc" id="adminDivUser">
+            <p>Modifier</p>
+        </div>
+        <div class="col-xs-2 desc" id="adminDivUser">
+            <p>Desactiver</p>
+        </div>#}
+        <hr>
+        
+    </div>
+
+    {% for article in articles %}
+        
+        <div class="row">
+
+        <div class="col-xs-2 desc" id="adminDivUser">
+            {{ id_articles[article.id]["id_doli"] }}
+        </div>
+        <div class="col-xs-2 desc" id="adminDivUser">
+            {{ id_articles[article.id]["id_stripe"] }}
+        </div>
+        <div class="col-xs-2 desc" id="adminDivUser">
+            {{ article.name}}
+        </div>
+        <div class="col-xs-2 desc" id="adminDivUser">
+            {{ article.price / 100}}
+        </div>
+        <div class="col-xs-2 desc" id="adminDivUser">
+            {{ article.ref}}
+        </div>
+        
+        {#<div class="col-xs-2 desc" id="adminDivArticle">
+            {% if article.best %}
+                <p>Selection</p>
+            {% endif %}
+        </div>
+    
+    
+    <div class="col-xs-2 desc" id="adminDivArticle">
+            <a href="{{ path('article_edit', {id: article.id})}}" class="btn btn-primary">Modifier</a>
+        </div>
+        <div class="col-xs-2 desc" id="adminDivArticle">
+            <a href="{{ path('article_desac', {id: article.id})}}" class="btn btn-primary">Desactiver</a>
+        </div>#}
+        
+        </div>
+        <hr>
+    {% endfor %}
+
+    
+{% endblock %}

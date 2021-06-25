@@ -32,6 +32,7 @@ class RegistrationController extends AbstractController
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
+
         $form->handleRequest($request);
         //Verifie si le form a été soumis et si il est complet 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -42,23 +43,15 @@ class RegistrationController extends AbstractController
                     $user->getPassword()
                 )
             );
+            
         
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
 
-            //Création de compte dolibarr 
-            $newClient = [
-                "name" 			=> "nom société client",
-                "email"			=> "email société client",
-                "client" 		=> "1",
-                "code_client"	=> "-1",
-                "phone" 		=> '636367637',
-                "ref_ext" 		=> 'chfhfdvfhfvhf'
-            ];
-            $newClientResult = $dolibarr->CallAPI("POST", "thirdparties", json_encode($newClient));
-            $newClientResult = json_decode($newClientResult, true);
+            
+
             //envoi d'un email de confirmation du compte
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                 (new TemplatedEmail())
@@ -113,23 +106,43 @@ class RegistrationController extends AbstractController
         ]);
         $user= $this->getUser();
 
+
+        //Création de compte dolibarr au nom de l'entreprise
+        if($user->getSociety()){
         $newClient = [
             "name" 			=> $user->getSociety(),
             "email"			=> $user->getEmail(),
             "ref_ext" 		=> $customer->id,
             "phone" 		=> $user->getPhone(),
-            "client" => 3,
+            "client" 		=> "1",
+            "code_client"	=> "-1",
     
         ];
-        $newClientResult = $dolibarr->CallAPI("PUT", "societe", json_encode($newClient));
+        } else {
+            //Création de compte dolibarr au nom du particulier
+            $newClient = [
+                "name" 			=> $user->getName() . " ". $user->getSurname(),
+                "email"			=> $user->getEmail(),
+                "ref_ext" 		=> $customer->id,
+                "phone" 		=> $user->getPhone(),
+                "client" 		=> "1",
+                "code_client"	=> "-1",
+        
+            ]; 
+        }
+        //Envoi du compte ds la bdd dolibarr
+        $newClientResult = $dolibarr->CallAPI("POST", "thirdparties", json_encode($newClient));
         $newClientResult = json_decode($newClientResult, true);
         $clientDoliId = $newClientResult;
 
         
         
         
+        
+        //Sauvegarde de l'id dolibarr dans la BDD du site
         $user->setIdDoli($clientDoliId);
         $user->setStripeId($customer->id);
+        $user->setIsActive(true);
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($user);
         $entityManager->flush();

@@ -1,0 +1,20 @@
+{% extends 'baseAdmin.html.twig' %}
+
+
+{% block body %}
+   
+    <h2>Modifier les données d'un utilisateur</h2>
+    
+     <form method="post">
+        <p>
+        <label for="nom"> <strong>Nom<span style="color: #ff0000;">*</span> :</strong>  </label> <input id="nom" name="nom" size="28" value="{{user.surname}}" type="text" /> 
+        <label for="prenom"><strong>Prénom : <span style="color: #ff0000;">*</span></strong> </label> <input id="prenom" name="prenom" size="27" type="text" value="{{user.name}}"/> <br /><br /> 
+        <label for="societe"> <strong> Société : </strong><br /> </label> <input id="societe" name="societe" size="81" type="text" value="{{user.society}}"/> <br /><br /> 
+        <label for="telephone"><strong>Téléphone<span style="color: #ff0000;">*</span> :</label></strong> <input id="telephone" name="telephone" size="27" type="text" value="{{user.phone}}"/><br /><br />  
+        <label for="mail"> <strong>Email <span style="color: #ff0000;">*</span> : </strong><br /> </label><input id="email" name="email" size="81" type="text" value="{{user.email}}"/>
+        </p>
+        <input type="submit" value="Envoyer"/>
+        
+    </form>
+
+{% endblock %}

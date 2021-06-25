@@ -2,17 +2,16 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Dolibarr\Dolibarr;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ContactController extends AbstractController
 {
     #[Route('/contact', name: 'contact')]
-    public function contact(): Response
+    public function contact(Dolibarr $dolibarr): Response
     {
-        return $this->render('contact/contact.html.twig', [
-            'controller_name' => 'ContactController',
-        ]);
+        return $this->render('contact/contact.html.twig');
     }
 }

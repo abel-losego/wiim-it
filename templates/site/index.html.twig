@@ -14,9 +14,11 @@
                         <div class="title-heading mt-4 ms-lg-4">
                             <h1 class="heading title-dark text-white mb-3">Fiabilité et sécurité au service de votre entreprise </h1>
                             <p class="para-desc para-dark text-light">Nous vous proposons des solutions de sauvegarde en ligne adaptées à votre budget et à vos attentes</p>
+                            {% if app.user != true %}
                             <div class="mt-4 pt-2">
                                 <a href="{{ path('app_register')}}" class="btn btn-primary m-1">Démarrer l'inscription <i class="uil uil-angle-right-b"></i></a>
                             </div>
+                            {% endif %}
                         </div>
                     </div><!--end col-->
                 </div><!--end row-->
@@ -138,19 +140,19 @@
                     <div class="col-lg-7 col-md-7 mt-4 pt-2 mt-sm-0 pt-sm-0">
                         <div class="section-title ms-lg-4">
                             <h4 class="title mb-4">Vivez plus sereinement</h4>
-                            <p class="text-muted">Commencez à travailler avec <span class="text-primary fw-bold">Wiim_It</span> et vous aurez accès à un des meilleurs services de sauvegarde en ligne sur le marché</p>
+                            <p class="text-muted">Commencez à travailler avec <span class="text-primary fw-bold">WIIM IT</span> et vous aurez accès à un des meilleurs services de sauvegarde en ligne sur le marché</p>
                             <ul class="list-unstyled text-muted">
-                                <li class="mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>Solution de sauvegarde en ligne pour votre future</li>
+                                <li class="mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>Solution de sauvegarde en ligne pour votre futur</li>
                                 <li class="mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>Nos talents à vos côtés pour vous accompagner</li>
-                                <li class="mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>Dupliqué votre réseau sur le cloud pour le rendre </li>
+                                <li class="mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>Dupliquez votre réseau sur le cloud pour le rendre </li>
                             </ul>
-                            <a href="javascript:void(0)" class="btn btn-primary mt-3">Buy Now <i class="uil uil-angle-right-b"></i></a>
+                            
                         </div>
                     </div><!--end col-->
                 </div><!--end row-->
             </div><!--end container-->
 
-            <div class="container mt-100 mt-60">
+            {#<div class="container mt-100 mt-60">
                 <div class="row">
                     <div class="col-lg-4 col-md-6 mb-4 pb-2">
                         <div class="d-flex key-feature align-items-center p-3 rounded shadow">
@@ -251,13 +253,11 @@
                         </div>
                     </div><!--end col-->
                     
-                    <div class="col-12 text-center">
-                        <a href="javascript:void(0)" class="btn btn-primary">En savoir plus <i class="uil uil-angle-right-b align-middle"></i></a>
-                    </div><!--end col-->
+                    
                 </div><!--end row-->
-            </div><!--end container-->
+            </div><!--end container-->#}
 
-            <div class="container mt-100 mt-60">
+            {#<div class="container mt-100 mt-60">
                 <div class="row justify-content-center">
                     <div class="col-12 text-center">
                         <div class="section-title mb-4 pb-2">
@@ -300,7 +300,7 @@
                         </div><!--end counter box-->
                     </div>
                 </div><!--end row-->
-            </div><!--end container-->
+            </div><!--end container-->#}
         </section><!--end section-->
         <!-- About End -->
 
@@ -320,13 +320,13 @@
         <!-- CTA End --> 
 
         <!-- Price Start -->
-        <section class="section">
+        <section class="section" id="catalogue">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 text-center">
                         <div class="section-title mb-4 pb-2">
                             <h4 class="title mb-4">Sauvegarder votre avenir</h4>
-                            <p class="text-muted para-desc mb-0 mx-auto">Commencez <span class="text-primary fw-bold">WIIM-IT</span> dès maintenant</p>
+                            <p class="text-muted para-desc mb-0 mx-auto" >Commencez <span class="text-primary fw-bold">WIIM-IT</span> dès maintenant</p>{#l'id Catalogue a été ajouté ici car le header cachait le titre de l'article#}
                         </div>
                     </div><!--end col-->
                 </div><!--end row-->
@@ -338,16 +338,16 @@
                     {% for article in articles %}
                     <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2">
                         <div class="card pricing-rates business-rate shadow bg-light border-0 rounded">
-                            {#{% if article.best == true %}#}
+                            {% if article.best == true %}
                             <div class="ribbon ribbon-right ribbon-warning overflow-hidden"><span class="text-center d-block shadow small h6">Best</span></div>
-                            {#{% endif %}#}
-                            <div class="card-body">
-                                <h6 class="title fw-bold text-uppercase text-primary mb-4">{{article.label}}</h6>
+                            {% endif %}
+                            <div class="card-body test">
+                                <h6 class="title fw-bold text-uppercase text-primary mb-4">{{article.name}}</h6>
                                 <div class="d-flex mb-4">
                                    
                                     <span class="h4 mb-0 mt-2">€</span>
-                                    <span class="price h1 mb-0">{{article.price_ttc}}</span>
-                                    <span class="h4 align-self-end mb-1">/mois</span>
+                                    <span class="price h2 mb-0">{{article.price_ttc}}</span>
+                                    <span class="h4 align-self-end mb-1">/mo</span>
                                 </div>
                                 
                                 <ul class="list-unstyled mb-0 ps-0">
@@ -361,40 +361,24 @@
                                     {% if article.services|length > 1 %}
                                     <input id="service_show" class="btn btn-primary mt-4" type="button" name="name-{{ article.id }}" value="name-{{ article.id }}">>
                                     {% endif %}#}
+                                    {#{% for service in article.services %}
+                                    <li class="h6 text-muted mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>{{ service.description }}</li>
+                                    {% endfor %}
                                     
+                                    {#<div id="{{article.id}}"class="part_hide" style="display: none;">
+                                        <li class="h6 text-muted mb-0 dropdown-content" ><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>Free Installment</li>
+                                    </div>#}
                                 </ul>
-                                <a id="checkout-button" onclick="click()" data-id="price_1Iw6VEKRg3070SDB9ar6TDPo" class="btn btn-primary mt-4">Started Now</a>
+                                {#<input  class="button_service" type="button" onclick="togg()" data-article="{{article.id}}" value="En savoir plus">#}
+
+                                <a id="checkout" onclick="test('{{article.ref_ext}}')"  class="btn btn-primary mt-4" >Started Now</a>
                             </div>
                         </div>
                         
                     </div><!--end col-->
                     {% endfor %}
 
-                    <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2">
-                        <div class="card pricing-rates business-rate shadow bg-light border-0 rounded">
-                            <div class="card-body">
-                                <h6 class="title fw-bold text-uppercase text-primary mb-4">Ultimate</h6>
-                                <div class="d-flex mb-4">
-                                    <span class="h4 mb-0 mt-2">$</span>
-                                    <span class="price h1 mb-0">79</span>
-                                    <span class="h4 align-self-end mb-1">/mo</span>
-                                </div>
-                                
-                                <ul class="list-unstyled mb-0 ps-0">
-                                    <li class="h6 text-muted mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>Full Access</li>
-                                    <li class="h6 text-muted mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>Enhanced Security</li>
-                                    <li class="h6 text-muted mb-0"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>Source Files</li>
-                                    
-                                    <li class="h6 text-muted mb-0 dropdown-content" style="display: none;"><span class="text-primary h5 me-2"><i class="uil uil-check-circle align-middle"></i></span>Free Installment</li>
-
-                                </ul>
-                                <!--<input class="dropbtn" onclic="">En savoir plus</button>-->
-                                    <input id="service_show" type="button" value="En savoir plus">
-                                    
-                                <a href="http://localhost:7681/public/payment/newpayment.php?amount=9.99" class="btn btn-primary mt-4">Started Now</a>
-                            </div>
-                        </div>
-                    </div><!--end col-->
+                    
                 </div><!--end row-->
             </div><!--end container-->
             <!-- Price End -->
@@ -431,16 +415,16 @@
 {% block javascripts %}
     <script src="https://js.stripe.com/v3/"></script>
     <script type="text/javascript">
-            // Create an instance of the Stripe object with your publishable API key
+            // Create an instance of the Stripe object with your publishable API key, le portail de paiement
             var stripe = Stripe('pk_test_51IvdmNKRg3070SDBriqTTX2HhXY9f0AhTuqGfIF8QLwRnBrFaWfFRjT5EXpY0oGILSGQHmtwYVLnUA8DedXPeFlA00pOFB7BJR');
-            var checkoutButton = document.getElementById('checkout-button');
-            /*var path = "/create-checkout-session/"
-            var url = path.concat("1");;*/
-            //for (var checkoutButton in checkoutButtons) {
-                function click() {
-                // Create a new Checkout Session using the server-side endpoint you
-                // created in step 3.
-                document.cookie="article=" + checkoutButton.dataset.id;
+            let b = document.getElementById("checkout");
+
+        
+            function test(x) {
+            // Create a new Checkout Session using the server-side endpoint you
+            // created in step 3.
+
+                document.cookie="article=" + x;
                 fetch('/create-checkout-session', {
                 method: 'POST',
                 }) 
@@ -461,36 +445,29 @@
                 .catch(function(error) {
                 console.error('Error:', error);
                 });
-            })
-            //}
+            }
+            
             ;
     </script>
+    
+    
+    
     <script type="text/javascript">
-        var togg1 = document.getElementsByClassName("service_show");
-        var d1 = document.getElementsByClassName("dropdown-content");
-        togg1.addEventListener("click", function () {
-        
-        for(i = 0; i < d1.length; i++){
-            
-            if(togg1.name == d1[i].id) {
-                
-                if (getComputedStyle(d1[i]).display != "none") {
-                    d1[i].style.display = "none";
-                } else {
-                    d1[i].style.display = "block";
-                }
-                }}
-        });
+    //Afficher et cacher les services des articles
+        function togg(){
 
-        function togg() {
-        if (getComputedStyle(d2).display != "none") {
-            d2.style.display = "none";
-        } else {
-            d2.style.display = "block";
-        }
-        }
+            let togg1 = document.getElementById(checkoutButton.dataset.article).getElementsByClassName('btn_service');
+            let p1 = document.getElementById(checkoutButton.dataset.article).getElementsByClassName('partie_hide');
+            if(getComputedStyle(p1).display != "none"){
+                p1.style.display = "none";
+                togg1.style.display = "none";
+            } else {
+                //Au cas où on rajoute un retour en arrière
+                p1.style.display = "block";
+                togg1.style.display = "block";
+            }
+        };
 
-        ;
-        togg2.onclick = togg;
     </script>
+    
 {% endblock %}

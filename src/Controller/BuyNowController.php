@@ -2,33 +2,17 @@
 
 namespace App\Controller;
 
-use Stripe\Stripe;
-use App\Entity\Article;
-use Symfony\Component\HttpFoundation\Request;
+use App\Dolibarr\Dolibarr;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use App\Repository\ArticleRepository;
-use Symfony\Component\HttpFoundation\Cookie;
-use Symfony\Component\HttpFoundation\InputBag;
 
 class BuyNowController extends AbstractController
 {
-    #[Route('/buy/now', name: 'buy_now')]
-    public function buyNow(): Response
-    {
-        if(!$this->getUser()) {
-            return $this->redirectToRoute('app_login');
-        }
-        return $this->render('buy_now/index.html.twig', [
-            'controller_name' => 'BuyNowController',
-        ]);
-    }
-
+    
     #[Route('/payment-error', name: 'payment-error')]
     public function paymentError(): Response
     {
@@ -37,14 +21,25 @@ class BuyNowController extends AbstractController
     }
 
     #[Route('/payment-success', name: 'payment-success')]
-    public function paymentSuccess(): Response
+    public function paymentSuccess(Dolibarr $dolibarr): Response
     {
+        if (!$_COOKIE["article"]){
+            return $this->render('buy_now/payment-success.html.twig');
+        }
+        if($_COOKIE["article"] == "0" ){
+            return $this->render('buy_now/payment-success.html.twig');
+        }
         \Stripe\Stripe::setApiKey('sk_test_51IvdmNKRg3070SDB42d5izgPSYy5U52wRjPT7LPwaPBheFBhmyvGmxjQ2dfITw0pGEDUgVaIX7AqgoLpgAECkze500XXleuhgl');
         
+
+
+        //Recupération de l'utilisateur stripe par son id
         $customer = \Stripe\Customer::retrieve([
             'id' => $this->getUser()->getStripeId(),
 
         ]);
+
+        //Mise à jour de l'email du client si il a été modifié lors de la commande sur stripe
         if($this->getUser()->getEmail() != $customer->email){
             $user= $this->getUser();
             $user->setEmail($customer->email);
@@ -54,31 +49,77 @@ class BuyNowController extends AbstractController
         }
         
         
+        //Recuperer l'article Dolibarr par son id pour envoyer la commande à dolibarr
+        $appli = $_COOKIE["article"];
+        $userParam = ["limit" => 1, "sortfield" => "rowid", "sqlfilters" => "(t.ref_ext:=:'".$appli."')"];
+        $productResult = $dolibarr->CallAPI("GET", "products", $userParam);
+        $productResult = json_decode($productResult, true);
+
+        $newCommandeLine = [];
+        $productResult= $productResult[0];
+        $newCommandeLine[] = [
+            "desc"		=> $productResult["label"],
+            "subprice"	=> $productResult["price"],
+            "qty"		=> 1,
+            "tva_tx"	=> $productResult["tva_tx"],
+            "fk_product"=> $productResult["id"]
+        ];
+
+
+        if (count($newCommandeLine) > 0) {
+            $newOrder = [
+                
+                "type" 			=> "0",
+                "socid" 	    => $this->getUser()->getIdDoli(),
+                "note_private"	=> "Commande effectuée automatiquement depuis le site internet de Wiim",
+                "lines"			=> $newCommandeLine,
+                "date"          => time()
+            ];
+        
+            $newOrderResult = $dolibarr->CallAPI("POST", "orders", json_encode($newOrder));
+            $newOrderResult = json_decode($newOrderResult, true);
+        }
+        setcookie("article", "0");
         
         return $this->render('buy_now/payment-success.html.twig', [
         ]);
     }
 
     #[Route('/create-checkout-session', name: 'first')]
-    public function checkout(ArticleRepository $repo/*, Request $request, Response $response*/): Response
+    public function checkout( Dolibarr $dolibarr/*ArticleRepository $repo, Request $request, Response $response*/): Response
     {
+        //on verifie que l'utilisateur est connecté
         if(!$this->getUser()) {
+            $this->addFlash('stripe_customer_error', 'Vous devez être connecté pour effectuer une commande');
             return $this->redirectToRoute('app_login');
+        }
+
+        if($this->getUser()->getIsActive() == false) {
+            
+            $this->addFlash('account_desac', 'Votre compte a été désactivée, veuillez contacter le service client');
+            return $this->redirectToRoute('contact');
         }
 
         \Stripe\Stripe::setApiKey('sk_test_51IvdmNKRg3070SDB42d5izgPSYy5U52wRjPT7LPwaPBheFBhmyvGmxjQ2dfITw0pGEDUgVaIX7AqgoLpgAECkze500XXleuhgl');
         
-        //$id_article = $request->cookie->get('name');
 
+        //Recupération de l'id stripe de l'article que le client veut acheter via les cookies, retour à l'accueil si aucun n'a été transmis 
         $id_article_voulu = $_COOKIE["article"];
-        $article_voulu = $repo->find($id_article_voulu);
-        //$response->headers->setCookie(Cookie::create('foo', 'bar'));
+        if (!$id_article_voulu){
+            return $this->redirectToRoute('home');
+        }
+        
+        $stripe = new \Stripe\StripeClient(
+            'sk_test_51IvdmNKRg3070SDB42d5izgPSYy5U52wRjPT7LPwaPBheFBhmyvGmxjQ2dfITw0pGEDUgVaIX7AqgoLpgAECkze500XXleuhgl'
+        );
 
+        
+        // Création d'un interface de paiement dans stripe
         $session = \Stripe\Checkout\Session::create([
               'payment_method_types' => ['card'],
               'line_items' => [
                 [
-                  'price' => $article_voulu->getIdStripe(),
+                  'price' => $id_article_voulu,
                   //'price' => 'price_1Iw6VEKRg3070SDB9ar6TDPo',
                   'quantity' => 1,
                 ],
@@ -90,27 +131,21 @@ class BuyNowController extends AbstractController
             ]);
             
         return new JsonResponse([ 'id' => $session->id ]);
-        
+        //return $this->render('contact/contact.html.twig');
     }
-
-    #[Route('/add-payment-method', name: 'add_payment_method')]
-    public function addPaymentMethod(): Response
-    {
-        if(!$this->getUser()) {
-            return $this->redirectToRoute('app_login');
-        }
-
-    }
-
     
-    
-
-
+    //Permet au client de gérer son abonnement 
     #[Route('/manage-your-account', name: 'account_manager')]
     public function payment(): Response
     {
         if(!$this->getUser()) {
             return $this->redirectToRoute('app_login');
+        }
+
+        if($this->getUser()->getIsActive() == false) {
+            $this->addFlash('account_desac', 'Votre compte a été désactivée, veuillez contacter le service client');
+            return $this->redirectToRoute('contact');
+            
         }
         
         \Stripe\Stripe::setApiKey('sk_test_51IvdmNKRg3070SDB42d5izgPSYy5U52wRjPT7LPwaPBheFBhmyvGmxjQ2dfITw0pGEDUgVaIX7AqgoLpgAECkze500XXleuhgl');
@@ -133,23 +168,9 @@ class BuyNowController extends AbstractController
         
         return $this->redirect($session->url);
 
-        /* Commande qui ont servi à tester iframe
-        
-        return new JsonResponse([ 'url' => $session->url ]);
-        
-        
-        return $this->render('buy_now/payment.html.twig', [
-            'url' => $session->url,
-        ]);*/
     }
 
-    #[Route('/payment-test', name: 'payment-test')]
-    public function paymentTest(): Response
-    {
-        return $this->render('buy_now/payment.html.twig', [
 
-        ]);
-    }
 }
 
 /*

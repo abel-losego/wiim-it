@@ -1,0 +1,79 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Users - Admin{% endblock %}
+
+{% block body %}
+
+    {% if app.user %}
+        <div class="mb-3" id="adminDiv">
+            Vous êtes connectés via {{ app.user.username }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>
+        </div>
+    {% endif %}
+
+    
+    <div id="adminDiv">
+        <h1>Liste de tous les utilisateurs</h1><p><small>triés par id (et donc ordre chronologique de création)</small></p>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-2 desc" id="adminDivUser">
+            <p>ID Dolibarr</p>
+        </div>
+        <div class="col-xs-4 desc" id="adminDivUser">
+            <p>ID Stripe</p>
+        </div>
+        <div class="col-xs-2 desc" id="adminDivUser">
+            <p>Nom</p>
+        </div>
+        <div class="col-xs-2 desc" id="adminDivUser">
+            <p>Prénom</p>
+        </div>
+        <div class="col-xs-2 desc" id="adminDivUser">
+            <p>Téléphone</p>
+        </div>
+        <div class="col-xs-2 desc" id="adminDivUser">
+            <p>Email</p>
+        </div>
+        {#<div class="col-xs-2 desc" id="adminDivUser">
+            <p>Modifier</p>
+        </div>
+        <div class="col-xs-2 desc" id="adminDivUser">
+            <p>Desactiver</p>
+        </div>#}
+        <hr>
+        
+    </div>
+    {% for user in users %}
+        
+        <div class="row">
+        <div class="col-xs-2 desc" id="adminDivUser">
+            {{ id_users[user.id]["id_doli"] }}
+        </div>
+        <div class="col-xs-2 desc" id="adminDivUser">
+            {{ id_users[user.id]["id_stripe"] }}
+        </div>
+        <div class="col-xs-2 desc" id="adminDivUser">
+            {{ user.surname}}
+        </div>
+        <div class="col-xs-2 desc" id="adminDivUser">
+            {{ user.name}}
+        </div>
+        <div class="col-xs-2 desc" id="adminDivUser">
+            {{ user.phone }}
+        </div>
+        <div class="col-xs-2 desc" id="adminDivUser">
+            {{ user.email }}
+        </div>
+        {#<div class="col-xs-2 desc" id="adminDivUser">
+            <a href="{{ path('user_edit', {id: user.id})}}" class="btn btn-primary">Modifier</a>
+        </div>
+        <div class="col-xs-2 desc" id="adminDivUser">
+            <a href="{{ path('user_desac', {id: user.id})}}" class="btn btn-primary">Desactiver</a>
+        </div>#}
+        
+        </div>
+        <hr>
+    {% endfor %}
+
+    
+{% endblock %}

@@ -45,6 +45,17 @@ class Article
      */
     private $services;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $id_doli;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $ref;
+
+
     public function __construct()
     {
         $this->services = new ArrayCollection();
@@ -127,4 +138,30 @@ class Article
 
         return $this;
     }
+
+    public function getIdDoli(): ?string
+    {
+        return $this->id_doli;
+    }
+
+    public function setIdDoli(string $id_doli): self
+    {
+        $this->id_doli = $id_doli;
+
+        return $this;
+    }
+
+    public function getRef(): ?string
+    {
+        return $this->ref;
+    }
+
+    public function setRef(string $ref): self
+    {
+        $this->ref = $ref;
+
+        return $this;
+    }
+
+    
 }

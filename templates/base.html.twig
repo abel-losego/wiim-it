@@ -15,7 +15,7 @@
         <link rel="icon" type="image/png" href="{{ asset('build/images/favicon.ico')}}" />
         
     </head>
-    <body>
+    <body onLoad="checkRefresh()">
         <header id="topnav" class="defaultscroll sticky">
             <div class="container">
                 <!-- Logo container-->
@@ -51,139 +51,10 @@
                     <!-- Navigation Menu-->   
                     <ul class="navigation-menu">
                         <li><a href="{{ path('home')}}" class="sub-menu-item">Home</a></li>
-                        <li class="has-submenu parent-parent-menu-item">
-                            <a href="javascript:void(0)">Landing</a><span class="menu-arrow"></span>
-                            <ul class="submenu megamenu">
-                                <li>
-                                    <ul>
-                                        <li><a href="index-saas.html" class="sub-menu-item">Saas</a></li>
-                                        <li><a href="index-classic-saas.html" class="sub-menu-item">Classic Saas</a></li>
-                                        <li><a href="index-agency.html" class="sub-menu-item">Agency</a></li>
-                                        
-                                    </ul>
-                                </li>
-
-                                <li>
-                                    <ul>
-                                        <li><a href="index-it-solution.html" class="sub-menu-item">IT Solution </a></li>
-                                        <li><a href="index-business.html" class="sub-menu-item">Business</a></li>
-                                        <li><a href="index-modern-business.html" class="sub-menu-item">Modern Business</a></li>
-                                        
-                                    </ul>
-                                </li>
-
-                                <li>
-                                    <ul>
-                                        <li><a href="index-finance.html" class="sub-menu-item">Finance <i class="mdi mdi-star align-middle text-warning"></i></a></li>
-                                        <li><a href="index-videocall.html" class="sub-menu-item">Video Conference <i class="mdi mdi-star align-middle text-warning"></i></a></li>
-                                        <li><a href="index-it-solution-two.html" class="sub-menu-item">IT Solution Two <i class="mdi mdi-star align-middle text-warning"></i></a></li>
-                                        
-                                    </ul>
-                                </li>
-                                
-                                <li>
-                                    <ul>
-                                        <li><a href="index-landing-one.html" class="sub-menu-item">Landing One </a></li>
-                                        <li><a href="index-landing-two.html" class="sub-menu-item">Landing Two </a></li>
-                                        <li><a href="index-landing-three.html" class="sub-menu-item">Landing Three </a></li>
-                                        <li><a href="index-landing-four.html" class="sub-menu-item">Landing Four</a></li>
-                                        
-                                    </ul>
-                                </li>
-                                
-                                <li>
-                                    <ul>
-                                        <li><a href="index-event.html" class="sub-menu-item">Event</a></li>
-                                        <li><a href="index-single-product.html" class="sub-menu-item">Product</a></li>
-                                        <li><a href="index-onepage.html" class="sub-menu-item">Saas <span class="badge bg-warning ms-2">Onepage</span></a></li>
-                                    </ul>
-                                </li>   
-                            </ul>
-                        </li>
-        
-                        <li class="has-submenu parent-parent-menu-item">
-                            <a href="javascript:void(0)">Pages</a><span class="menu-arrow"></span>
-                            <ul class="submenu">
-                                <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Company </a><span class="submenu-arrow"></span>
-                                    <ul class="submenu">
-                                        <li><a href="page-aboutus.html" class="sub-menu-item"> About Us</a></li>
-                                        <li><a href="page-aboutus-two.html" class="sub-menu-item"> About Us Two </a></li>
-                                        <li><a href="page-services.html" class="sub-menu-item">Services</a></li>
-                                        <li><a href="page-history.html" class="sub-menu-item">History </a></li>
-                                        <li><a href="page-team.html" class="sub-menu-item"> Team</a></li>
-                                        <li><a href="page-pricing.html" class="sub-menu-item">Pricing</a></li>
-                                    </ul> 
-                                </li>
-                                <li class="has-submenu parent-menu-item"><a href="javascript:void(0)"> Account </a><span class="submenu-arrow"></span>
-                                    <ul class="submenu">
-                                        <li><a href="account-profile.html" class="sub-menu-item">Profile</a></li>
-                                        <li><a href="account-members.html" class="sub-menu-item">Members </a></li>
-                                        <li><a href="account-works.html" class="sub-menu-item">Works </a></li>
-                                        
-                                    </ul>  
-                                </li>
-                                
-                            </ul>
-                        </li>
-
-                        <li class="has-submenu parent-parent-menu-item">
-                            <a href="javascript:void(0)">Portfolio</a><span class="menu-arrow"></span>
-                            <ul class="submenu megamenu">
-                                <li>
-                                    <ul>
-                                        <li class="megamenu-head">Modern Portfolio</li>
-                                        <li><a href="portfolio-modern-two.html" class="sub-menu-item">Two Column</a></li>
-                                        <li><a href="portfolio-modern-three.html" class="sub-menu-item">Three Column</a></li>
-                                        
-                                    </ul>
-                                </li>
-
-                                <li>
-                                    <ul>
-                                        <li class="megamenu-head">Classic Portfolio</li>
-                                        <li><a href="portfolio-classic-two.html" class="sub-menu-item">Two Column</a></li>
-                                        <li><a href="portfolio-classic-three.html" class="sub-menu-item">Three Column</a></li>
-                                       
-                                    </ul>
-                                </li>
-
-                                <li>
-                                    <ul>
-                                        <li class="megamenu-head">Grid Portfolio</li>
-                                        <li><a href="portfolio-grid-two.html" class="sub-menu-item">Two Column</a></li>
-                                        <li><a href="portfolio-grid-three.html" class="sub-menu-item">Three Column</a></li>
-                                       
-                                    </ul>
-                                </li>
-                                
-                                <li>
-                                    <ul>
-                                        <li class="megamenu-head">Masonry Portfolio</li>
-                                        <li><a href="portfolio-masonry-two.html" class="sub-menu-item">Two Column</a></li>
-                                        <li><a href="portfolio-masonry-three.html" class="sub-menu-item">Three Column</a></li>
-                                        
-                                    </ul>
-                                </li>
-                                
-                                <li>
-                                    <ul>
-                                        <li class="megamenu-head">Portfolio Detail</li>
-                                        <li><a href="portfolio-detail-one.html" class="sub-menu-item">Portfolio One</a></li>
-                                        <li><a href="portfolio-detail-two.html" class="sub-menu-item">Portfolio Two</a></li>
-                                        
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-submenu parent-menu-item">
-                            <a href="javascript:void(0)">Docs</a><span class="menu-arrow"></span>
-                            <ul class="submenu">
-                                <li><a href="documentation.html" class="sub-menu-item">Documentation</a></li>
-                                <li><a href="changelog.html" class="sub-menu-item">Changelog</a></li>
-                                <li><a href="components.html" class="sub-menu-item">Components</a></li>
-                                <li><a href="widget.html" class="sub-menu-item">Widget</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="{{ path('home')}}#catalogue" class="sub-menu-item">Catalogue</a></li>
+                        
+                        <li><a href="{{ path('contact')}}" class="sub-menu-item">Contact</a></li>
+                        
                     </ul><!--end navigation menu-->
                     <div class="buy-menu-btn d-none">
                         <a href="" target="_blank" class="btn btn-primary">Buy Now</a>
@@ -194,7 +65,7 @@
         <!-- Navbar End -->
         <div id="body-div" style="margin-top:75px;">
         <!-- Message flash pour la confirmation du compte -->
-        {% for messages in app.flashes(['verify_email_error','verify_email_check','success']) %}
+        {% for messages in app.flashes(['verify_email_error','verify_email_check','success','account_desac','stripe_customer_error']) %}
             {% for message in messages %}
             <div class="flash-notice">
                 {{ message }}
@@ -325,7 +196,9 @@
             {{ encore_entry_script_tags('feather_js') }}
             {{ encore_entry_script_tags('tobii') }}
         
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+                {{ encore_entry_script_tags('app') }}
+        {% endblock %}
         </script>
     </body>
 </html>
